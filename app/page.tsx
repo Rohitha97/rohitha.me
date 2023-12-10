@@ -59,7 +59,7 @@ export default async function Home() {
         >
           <li className="transition-opacity">
             <Link
-              href="mailto:contact@b-r.io"
+              href="mailto:rohith_rathnayake@yahoo.com"
               className="flex items-center gap-2 no-underline"
             >
               <ArrowUpRightIcon className="h-5 w-5" />

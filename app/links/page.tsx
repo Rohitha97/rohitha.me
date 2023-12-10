@@ -24,9 +24,8 @@ export default function Links() {
               Rohitha Rathnayake
             </h1>
             <p className="mx-auto max-w-sm text-center text-secondary">
-              Software engineer who loves building cool things with code. In
-              addition to coding, I also make YouTube videos. Find me elsewhere
-              @brianruizy
+              Software engineer who loves building cool things with code. I also
+              enjoy reading the latest tech news and learning new things.
             </p>
           </div>
         </div>

@@ -7,13 +7,12 @@ import ConnectLinks from "../../components/ConnectLinks";
 import Workplaces from "./components/Workplaces";
 import Gallery from "./components/Gallery";
 
-import hinesLogo from "public/work/hines-logo.jpeg";
-import perishipLogo from "public/work/periship-logo.jpeg";
-import camsLogo from "public/work/cams-logo.png";
-import uhdLogo from "public/work/uhd.png";
+import dbeetaLogo from "public/work/dbeeta.jpg";
+import kaprukaLogo from "public/work/kapruka.png";
 
-import meLily from "public/gallery/me-lily.jpg";
-import colorado from "public/gallery/colorado.jpg";
+import teamKapruka from "public/gallery/team-kapruka.jpg";
+import teamDbeeta from "public/gallery/team-dbeeta.jpg";
+import logo from "public/logo/icon-512.png";
 
 export const metadata: Metadata = {
   title: "About | Rohitha Rathnayake",
@@ -41,8 +40,8 @@ export default function About() {
           style={{ "--index": 1 } as React.CSSProperties}
         >
           <Image
-            src={meLily}
-            alt={"me and lily"}
+            src={teamKapruka}
+            alt={"team kapruka"}
             width={324}
             height={139}
             className="pointer-events-none relative inset-0 h-60 -rotate-6 rounded-2xl bg-gray-400 object-cover shadow-md"
@@ -55,8 +54,8 @@ export default function About() {
           style={{ "--index": 2 } as React.CSSProperties}
         >
           <Image
-            src={colorado}
-            alt={"me and lily"}
+            src={teamDbeeta}
+            alt={"team dbeeta"}
             width={220}
             height={260}
             className="pointer-events-none absolute inset-0 -top-48 left-[45%] w-48 rotate-6 rounded-2xl bg-gray-400 object-cover shadow-md md:left-[60%] md:w-56"
@@ -100,9 +99,8 @@ export default function About() {
         <Section heading="Connect" headingAlignment="left">
           <div className="flex w-full flex-col gap-8">
             <p>
-              Have a question or just want to chat? Feel free to{" "}
-              <Link href="mailto:contact@b-r.io">email me</Link>. Try finding me
-              anywhere else at @brianruizy
+              Have a question or want to work with me? Feel free to{" "}
+              <Link href="mailto:rohith_rathnayake@yahoo.com">email me</Link>.
             </p>
             <ul className="animated-list grid flex-grow grid-cols-1 gap-2 md:grid-cols-2">
               {ConnectLinks.map((link) => (
@@ -137,17 +135,23 @@ export default function About() {
         <Section heading="Work" headingAlignment="left">
           <div className="flex w-full flex-col gap-8">
             <p>
-              {new Date().getFullYear() - 2019}+ years of professional
+              {new Date().getFullYear() - 2022}+ years of professional
               development experience.
             </p>
             <p>
-              I started my career teaching others how to code, which I will
-              always be appreciative of. Then I worked at a few small local
-              companies. Now I&apos;m a full stack engineer currently working at{" "}
-              <Link className="underline" href="https://hines.com">
-                Hines
-              </Link>
-              , one of the largest private real estate investors in the world.
+              Leveraging my passion for cutting-edge technology, I began my
+              career as a freelancer, gaining valuable experience and honing my
+              skills. I then transitioned to working at{" "}
+              <Link className="underline" href="https://kapruka.com">
+                Kapruka
+              </Link>{" "}
+              , one of Sri Lanka&apos;s largest e-commerce platforms, where I
+              further developed my expertise. Subsequently, I joined{" "}
+              <Link className="underline" href="https://dbeeta.com">
+                Dbeeta
+              </Link>{" "}
+              , an Italian startup, as a full-stack engineer, contributing to
+              their innovative projects and expanding my knowledge.
             </p>
             <Workplaces items={workplaces} />
           </div>
@@ -159,31 +163,24 @@ export default function About() {
 
 const workplaces = [
   {
-    title: "Full Stack Engineer",
-    company: "Hines",
-    time: "2022 -",
-    imageSrc: hinesLogo,
-    link: "https://hines.com",
+    title: "Associate Software Engineer",
+    company: "Dbeeta Software Solutions",
+    time: "Jan 2023 - Oct 2023",
+    imageSrc: dbeetaLogo,
+    link: "https://dbeeta.it",
   },
   {
-    title: "Software Engineer",
-    company: "PeriShip",
-    time: "2021 - 2022",
-    imageSrc: perishipLogo,
-    link: "https://peripharma.com/",
+    title: "Software Developer Intern",
+    company: "Kapruka Holding PLC",
+    time: "Sap 2022 - Jan 2023",
+    imageSrc: kaprukaLogo,
+    link: "https://kapruka.com/",
   },
   {
-    title: "Python Developer",
-    company: "CAMS",
-    time: "2019 - 2020",
-    imageSrc: camsLogo,
-    link: "https://camstex.com",
-  },
-  {
-    title: "Coding Camp Instructor",
-    company: "University of Houston",
-    time: "2019",
-    imageSrc: uhdLogo,
-    link: "https://www.uhd.edu/",
+    title: "Freelancing Developer",
+    company: "-",
+    time: "Fab 2022 - Present",
+    imageSrc: logo,
+    link: "/",
   },
 ];
