@@ -6,8 +6,9 @@ import PostList from "./blog/components/ui/PostList";
 import Stats from "@/components/Stats";
 import { ArrowUpRightIcon } from "@heroicons/react/20/solid";
 import Avatar from "@/public/avatar.png";
+import { useTranslations } from "next-intl";
 
-export default async function Home() {
+export default function Home() {
   const posts = allPosts
     .sort(
       (a, b) =>

@@ -1,98 +1,58 @@
-"use client";
-import { Fragment } from "react";
+// "use client";
+
+import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useTheme } from "next-themes";
-import Image from "next/image";
 
 import NavLink from "./ui/NavLink";
 import ThemeSwitcher from "./ThemeSwitcher";
+import Logo from "./Logo";
 
-import { Popover, Transition } from "@headlessui/react";
-import clsx from "clsx";
+import { getDictionary } from "@/lib/dictionary";
+import { Locale } from "@/i18n.config";
 import LanguageSwitcher from "./LanguageSwitcher";
+import MobileMenu from "./MobileMenu";
 
-const links = [
-  { label: "About", href: "/about" },
-  { label: "Blog", href: "/blog" },
-  { label: "Projects", href: "/projects" },
-];
+interface NavigationData {
+  home: string;
+  blog: string;
+  about: string;
+  projects: string;
+  menu: string;
+}
 
-export default function Navigation() {
-  const pathname = `/${usePathname().split("/")[1]}`; // active paths on dynamic subpages
-  const { theme } = useTheme();
+export default async function Navigation({ lang }: { lang: Locale }) {
+  const { navigation } = await getDictionary(lang);
+
+  const links = navigation
+    ? [
+        { href: `/about`, label: navigation.about },
+        { href: `/blog`, label: navigation.blog },
+        { href: `/projects`, label: navigation.projects },
+      ]
+    : [];
 
   return (
-    <header className={clsx("relative top-0 z-20 bg-primary md:sticky")}>
+    <header className="relative top-0 z-20 bg-primary md:sticky">
       <nav className="lg mx-auto flex max-w-[700px] items-center justify-between gap-4 px-4 py-3 md:px-6 ">
-        <Link href="/" className="shrink-0 text-primary">
-          <Image
-            src={
-              theme === "dark" ? "/logo/logo-white.png" : "/logo/logo-black.png"
-            }
-            alt="logo"
-            width={40}
-            height={40}
-            className="rounded-full pt-2"
-          />
-        </Link>
+        <NavLink lang={lang} href="/" className="shrink-0 text-primary">
+          <Logo />
+        </NavLink>
         <ul className="hidden items-center gap-1 md:flex">
           {links.map((link) => (
             <li key={link.href}>
-              <NavLink href={link.href}>{link.label}</NavLink>
+              <NavLink lang={lang} href={link.href}>
+                {link.label}
+              </NavLink>
             </li>
           ))}
         </ul>
-        <Popover className="relative ml-auto md:hidden">
-          <Popover.Button className="flex items-center gap-1 rounded-lg p-1 text-secondary focus:ring-0 focus-visible:outline-none">
-            Menu
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-              className="h-5 w-5"
-            >
-              <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
-            </svg>
-          </Popover.Button>
+        <MobileMenu links={links} navigation={navigation} />
 
-          <Transition
-            as={Fragment}
-            enter="transition ease-out duration-200"
-            enterFrom="opacity-0 translate-y-1"
-            enterTo="opacity-100 translate-y-0"
-            leave="transition ease-in duration-150"
-            leaveFrom="opacity-100 translate-y-0"
-            leaveTo="opacity-0 translate-y-1"
-          >
-            <Popover.Panel
-              className="absolute right-0 z-10 mt-2 w-40 origin-top-right overflow-auto rounded-xl bg-white p-2 text-base shadow-lg focus:outline-none dark:bg-black sm:text-sm"
-              style={theme === "terminal" ? { background: "#040605" } : {}}
-            >
-              <div className="grid">
-                {links.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className={clsx(
-                      "rounded-md px-4 py-2 transition-colors hover:text-primary",
-                      pathname === link.href
-                        ? "bg-tertiary font-medium"
-                        : "font-normal",
-                    )}
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-              </div>
-            </Popover.Panel>
-          </Transition>
-        </Popover>
         <div className="flex space-x-4">
           <div className="h-8 w-8">
             <LanguageSwitcher />
           </div>
-
           <div className="h-8 w-16 pt-1">
             <ThemeSwitcher />
           </div>

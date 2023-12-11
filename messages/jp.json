@@ -1,0 +1,27 @@
+{
+  "navigation": {
+    "home": "ホーム",
+    "blog": "ブログ",
+    "about": "私たちについて",
+    "projects": "プロジェクト",
+    "menu": "メニュー"
+  },
+  "page": {
+    "home": {
+      "title": "ホーム",
+      "description": "ウェブサイトのホームページ"
+    },
+    "about": {
+      "title": "私たちについて",
+      "description": "ウェブサイトの会社概要ページ"
+    },
+    "blog": {
+      "title": "ブログ",
+      "description": "ウェブサイトのブログページ"
+    },
+    "project": {
+      "title": "プロジェクト",
+      "description": "ウェブサイトのプロジェクトページ"
+    }
+  }
+}

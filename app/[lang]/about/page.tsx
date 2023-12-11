@@ -3,7 +3,7 @@ import { Metadata } from "next";
 
 import Link from "@/components/ui/Link";
 import Section from "@/components/Section";
-import ConnectLinks from "../../components/ConnectLinks";
+import ConnectLinks from "@/components/ConnectLinks";
 import Workplaces from "./components/Workplaces";
 import Gallery from "./components/Gallery";
 

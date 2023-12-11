@@ -25,7 +25,7 @@ const postComputedFields: ComputedFields = {
 
 export const Post = defineDocumentType(() => ({
   name: "Post",
-  filePathPattern: `blog/**/*.mdx`,
+  filePathPattern: `[lang]/blog/**/*.mdx`,
   contentType: "mdx",
   fields: {
     title: { type: "string", required: true },
@@ -34,7 +34,7 @@ export const Post = defineDocumentType(() => ({
     updatedAt: { type: "string", required: false },
     tags: { type: "json", required: false },
     featured: { type: "boolean", required: false },
-    shortTitle : { type: "string", required: false, default: ""},
+    shortTitle: { type: "string", required: false, default: "" },
   },
   computedFields: postComputedFields,
 }));
@@ -52,7 +52,7 @@ const projectComputedFields: ComputedFields = {
 
 export const Project = defineDocumentType(() => ({
   name: "Project",
-  filePathPattern: `project/**/*.mdx`,
+  filePathPattern: `[lang]/project/**/*.mdx`,
   contentType: "mdx",
   fields: {
     title: { type: "string", required: true },

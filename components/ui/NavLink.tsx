@@ -1,24 +1,36 @@
+"use client";
 import Link from "next/link";
 import { ReactNode } from "react";
 import clsx from "clsx";
 import { usePathname } from "next/navigation";
+import { i18n } from "@/i18n.config";
 
 type NavLinkProps = {
   href: string;
-  children: ReactNode;
+  lang: string;
+  children: React.ReactNode;
+  [key: string]: any;
 };
 
-export default function NavLink({ href, children }: NavLinkProps) {
-  const pathname = `/${usePathname().split("/")[1]}`; // active paths on dynamic subpages
-  const active = pathname === href;
+export default function NavLink({
+  href,
+  lang,
+  children,
+  ...props
+}: NavLinkProps) {
+  const pathname = `/${usePathname().split("/")[1]}`;
+  const isDefaultLang = lang === i18n.defaultLocale;
+  const path = isDefaultLang ? href : `/${lang}${href}`;
+  const active = path === pathname;
 
   return (
     <Link
       className={clsx(
-        "px-4 py-2 rounded-lg text-sm hover:text-primary transition-colors",
-        active ? "bg-secondaryA text-primary" : "text-secondary"
+        "rounded-lg px-4 py-2 text-sm transition-colors hover:text-primary",
+        active ? "bg-secondaryA text-primary" : "text-secondary",
       )}
-      href={href}
+      href={path}
+      {...props}
     >
       {children}
     </Link>

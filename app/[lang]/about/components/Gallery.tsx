@@ -10,13 +10,14 @@ import village from "public/gallery/village.jpg";
 import random from "public/gallery/random-click.jpg";
 import teamKapruka from "public/gallery/team-kapruka.jpg";
 import teamDbeeta from "public/gallery/team-dbeeta.jpg";
+// import { ticket } from "/ticketing.woff2";
 
 import Halo from "@/components/ui/Halo";
 
-const ticketingFont = localFont({
-  src: "../../../public/ticketing.woff2",
-  display: "swap",
-});
+// const ticketingFont = localFont({
+//   src: ticket,
+//   display: "swap",
+// });
 
 type PhotoProps = {
   src: StaticImageData | string;
@@ -119,12 +120,7 @@ function Photo({
           <Halo strength={50} className="flex items-center">
             <span className="absolute h-[500px] w-[500px] rotate-[-20deg] bg-[url('/photopaper.png')] bg-[length:280px] bg-repeat" />
             <div className="z-[1] px-6">
-              <div
-                className={clsx(
-                  ticketingFont.className,
-                  "flex flex-col gap-1 uppercase",
-                )}
-              >
+              <div className="flex flex-col gap-1 uppercase">
                 <p className="text-sm text-secondary">{fileName}</p>
                 {meta && <p className="text-sm text-secondary">{meta}</p>}
               </div>

@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import { Listbox } from "@headlessui/react";
 import clsx from "clsx";
@@ -8,7 +10,14 @@ import { MoonIcon, CheckIcon } from "@heroicons/react/20/solid";
 import { SunIcon } from "@heroicons/react/24/outline";
 
 export default function ThemeSwitcher() {
+  const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
+
+  // When mounted on client, now we can show the UI
+  useEffect(() => setMounted(true), []);
+
+  if (!mounted) return null;
+
   return (
     <>
       <button

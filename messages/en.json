@@ -1,0 +1,28 @@
+{
+  "navigation": {
+    "home": "Home",
+    "blog": "Blog",
+    "about": "About",
+    "projects": "Projects",
+    "menu": "Menu"
+  },
+  "page": {
+    "home": {
+      "title": "Home",
+      "description": "Home page of the website"
+    },
+    "about": {
+      "title": "About",
+      "description": "About page of the website"
+    },
+
+    "blog": {
+      "title": "Blog",
+      "description": "Blog page of the website"
+    },
+    "project": {
+      "title": "Projects",
+      "description": "Projects page of the website"
+    }
+  }
+}
