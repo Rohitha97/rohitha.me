@@ -6,7 +6,7 @@ import NewsletterSignupForm from "./components/ui/NewsletterSignupForm";
 export const metadata: Metadata = {
   title: "Blog | Rohitha Rathnayake",
   description:
-    "I write about programming, design, and occasionally life updates!",
+    "I write about programming, technology, and occasionally life updates!",
 };
 
 export default function Blog() {
@@ -24,7 +24,7 @@ export default function Blog() {
             className="animate-in text-secondary"
             style={{ "--index": 1 } as React.CSSProperties}
           >
-            {posts.length} posts about code, design, more ...
+            {posts.length} posts about code, tech, more ...
           </p>
         </div>
       </div>
@@ -33,12 +33,6 @@ export default function Blog() {
         style={{ "--index": 2 } as React.CSSProperties}
       >
         <PostList posts={posts} />
-      </div>
-      <div
-        className="animate-in"
-        style={{ "--index": 3 } as React.CSSProperties}
-      >
-        <NewsletterSignupForm />
       </div>
     </div>
   );

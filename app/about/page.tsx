@@ -75,23 +75,16 @@ export default function About() {
             <p>Hello world, I&apos;m Rohitha Rathnayake!</p>
 
             <p>
-              I have a passion for design and am always looking for ways to
-              incorporate it into my engineering work.
+              I have a passion for full-stack development and am constantly
+              looking for ways to incorporate it into my engineering work.
             </p>
             <p>
-              In addition to coding, I also make{" "}
-              <Link
-                className="underline"
-                href="https://www.youtube.com/channel/@brianruizy"
-              >
-                YouTube
-              </Link>{" "}
-              videos, where I focus on tech gear, creative vlogs, and a bit of
-              personal development.
+              In addition to coding, I&apos;m a curious explorer who enjoys
+              learning about other cultures and languages.
             </p>
             <p>
-              When I&apos;m not at my desk I am probably lifting weights,
-              playing soccer, or at a coffee shop :)
+              When I&apos;m nnot at my desk, you might find me traveling,
+              shopping, or at a DJ party :)
             </p>
           </div>
         </Section>

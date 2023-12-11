@@ -151,10 +151,10 @@ export default function Gallery() {
           index={1}
         />
         <Photo
-          src={random}
+          src={teamDbeeta}
           meta="2022-09-28"
           alt="Random Click"
-          width={230}
+          width={330}
           height={250}
           rotate={6.3}
           left={188}
@@ -172,11 +172,11 @@ export default function Gallery() {
           index={3}
         />
         <Photo
-          src={teamDbeeta}
+          src={random}
           meta="2023-04-16"
           alt={"Team Dbeeta"}
-          width={220}
-          height={260}
+          width={230}
+          height={250}
           rotate={7.6}
           left={557}
           index={4}
