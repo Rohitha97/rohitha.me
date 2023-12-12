@@ -7,6 +7,7 @@ const nextConfig = {
   swcMinify: true,
   images: {
     domains: [
+      "localhost",
       "tailwindui.com",
       "images.unsplash.com",
       "cdn.dribbble.com",

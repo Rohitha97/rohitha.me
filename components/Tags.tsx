@@ -12,12 +12,12 @@ const Tags = ({ tags }: TagsProps): JSX.Element | null => {
   return (
     <ul className="flex flex-col gap-6">
       <h2>Tags</h2>
-      <div className="flex flex-wrap gap-3 animated-list">
+      <div className="animated-list flex flex-wrap gap-3">
         {tags.map((tag: string) => (
           <li key={tag} className="transition-opacity">
             <Link
               href={`/blog/tag/${slugify(tag, { lower: true })}`}
-              className="px-4 py-2 rounded-lg bg-secondary text-sm text-primary whitespace-nowrap "
+              className="whitespace-nowrap rounded-lg bg-secondary px-4 py-2 text-sm text-primary "
             >
               {tag}
             </Link>

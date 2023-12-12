@@ -11,8 +11,11 @@ import { useEffect, useState } from "react";
 export default function LanguageSwitcher() {
   const pathName = usePathname();
   const [currentLocale, setCurrentLocale] = useState(() => {
-    const storedLocale = localStorage.getItem("locale");
-    return storedLocale || i18n.defaultLocale;
+    if (typeof window !== "undefined") {
+      const storedLocale = window.localStorage.getItem("locale");
+      return storedLocale || i18n.defaultLocale;
+    }
+    return i18n.defaultLocale;
   });
 
   useEffect(() => {

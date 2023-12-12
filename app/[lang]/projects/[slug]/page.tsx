@@ -1,12 +1,8 @@
 import { allProjects, Post as PostType } from ".contentlayer/generated";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 
-import Mdx from "@/app/blog/components/ui/MdxWrapper";
-import PostList from "@/app/blog/components/ui/PostList";
-import Tags from "@/components/Tags";
 import Link from "@/components/ui/Link";
-import { formatDate } from "lib/formatdate";
+import Mdx from "@/components/ui/MdxWrapper";
 
 type PostProps = {
   post: PostType;
@@ -14,7 +10,6 @@ type PostProps = {
 };
 
 export default function Project({ params }: { params: any }) {
-  // const post = allPosts.find((post) => post.slug === params.slug);
   const post = allProjects.find((post) => post.slug === params.slug);
 
   if (!post) {
@@ -75,8 +70,11 @@ export default function Project({ params }: { params: any }) {
           <p className="max-w-lg text-secondary">
             Need more project details, or interested in working together? Reach
             out to me directly at{" "}
-            <a href="mailto:contact@b-r.io" className="text-primary underline">
-              brian@b-r.io
+            <a
+              href="mailto:contact@rohitha.me"
+              className="text-primary underline"
+            >
+              te@rohitha.me
             </a>
             . I&apos;d be happy to connect!{" "}
           </p>

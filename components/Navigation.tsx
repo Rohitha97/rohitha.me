@@ -1,9 +1,6 @@
 // "use client";
 
 import React from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-
 import NavLink from "./ui/NavLink";
 import ThemeSwitcher from "./ThemeSwitcher";
 import Logo from "./Logo";
