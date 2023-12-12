@@ -6,7 +6,7 @@ import React, { useRef, useState } from "react";
 
 function getRelativeCoordinates(
   event: React.MouseEvent<HTMLUListElement>,
-  referenceElement: any
+  referenceElement: any,
 ) {
   const position = {
     x: event.pageX,
@@ -36,9 +36,10 @@ function getRelativeCoordinates(
 
 type PostListProps = {
   posts: PostType[];
+  page: any;
 };
 
-export default function PostList({ posts }: PostListProps) {
+export default function PostList({ posts, page }: PostListProps) {
   const [mousePosition, setMousePosition] = useState({
     x: 240,
     y: 0,
@@ -52,9 +53,9 @@ export default function PostList({ posts }: PostListProps) {
     <ul
       ref={listRef}
       onMouseMove={(e) => handleMouseMove(e)}
-      className="flex flex-col animated-list"
+      className="animated-list flex flex-col"
     >
-      {posts.length === 0 && <p>No posts found</p>}
+      {posts.length === 0 && <p>{page.assets.noPosts}</p>}
       {posts.map((post) => (
         <Post key={post.slug} post={post} mousePosition={mousePosition} />
       ))}

@@ -31,7 +31,7 @@ export function GitHub() {
   return addCommas(githubData?.stars);
 }
 
-export default function Stats() {
+export default function Stats({ page }: { page: any }) {
   const { theme } = useTheme();
   const username = "Rohitha97";
 

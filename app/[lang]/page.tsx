@@ -7,8 +7,14 @@ import Stats from "@/components/Stats";
 import { ArrowUpRightIcon } from "@heroicons/react/20/solid";
 import Avatar from "@/public/avatar.png";
 import { useTranslations } from "next-intl";
+import { getDictionary } from "@/lib/dictionary";
+import { Locale } from "@/i18n.config";
 
-export default function Home() {
+export default async function Home({
+  params: { lang },
+}: {
+  params: { lang: Locale };
+}) {
   const posts = allPosts
     .sort(
       (a, b) =>
@@ -17,18 +23,20 @@ export default function Home() {
     // 3 most recent
     .filter((_, i) => i < 3);
 
+  const { page } = await getDictionary(lang);
+
   return (
     <div className="flex flex-col gap-16 md:gap-24">
       <div className="flex animate-in flex-col gap-8">
         <div>
           <h1 className="animate-in text-3xl font-bold tracking-tight text-primary">
-            Rohitha Rathnayake
+            {page.home.name}
           </h1>
           <p
             className="animate-in text-secondary"
             style={{ "--index": 1 } as React.CSSProperties}
           >
-            Full stack developer &amp; tech enthusiast.
+            {page.home.tag}
           </p>
         </div>
         <div
@@ -42,17 +50,13 @@ export default function Home() {
             alt="avatar"
             className="rounded-full bg-secondary"
           />
-          <Stats />
+          <Stats page={page} />
         </div>
         <p
           className="max-w-lg animate-in text-primary"
           style={{ "--index": 2 } as React.CSSProperties}
         >
-          Hi, I&apos;m Rohitha Rathnayake, a software engineer who loves to
-          create amazing things using code. Besides coding, I&apos;m a curious
-          explorer who loves to learn about different cultures and languages. My
-          love for travel helps me see the world in new ways and understand
-          people better.
+          {page.home.description}
         </p>
         <ul
           className="animated-list flex animate-in flex-col gap-2 text-secondary md:flex-row md:gap-6"
@@ -64,7 +68,7 @@ export default function Home() {
               className="flex items-center gap-2 no-underline"
             >
               <ArrowUpRightIcon className="h-5 w-5" />
-              <span>Email me</span>
+              <span>{page.assets.emailMe}</span>
             </Link>
           </li>
           <li className="transition-opacity">
@@ -73,7 +77,7 @@ export default function Home() {
               className="flex items-center gap-2 no-underline"
             >
               <ArrowUpRightIcon className="h-5 w-5" />
-              <span>More ways to connect</span>
+              <span>{page.assets.moreWays}</span>
             </Link>
           </li>
         </ul>
@@ -82,13 +86,13 @@ export default function Home() {
         className="flex animate-in flex-col gap-8"
         style={{ "--index": 3 } as React.CSSProperties}
       >
-        <h2 className="text-secondary">Latest Posts</h2>
-        <PostList posts={posts} />
+        <h2 className="text-secondary">{page.assets.latestPost}</h2>
+        <PostList page={page} posts={posts} />
         <Link
           href="/blog"
           className="text-secondary underline underline-offset-4 hover:text-primary"
         >
-          See All
+          {page.assets.seeAll}
         </Link>
       </div>
     </div>

@@ -32,10 +32,6 @@ export default function LanguageSwitcher() {
     }
 
     const segments = pathName.split("/");
-    if (locale === i18n.defaultLocale) {
-      return segments.length === 2 ? "/" : segments.splice(1, 1).join("/");
-    }
-
     segments[1] = locale;
     return segments.join("/");
   };
