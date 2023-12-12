@@ -50,7 +50,7 @@ export default async function Home({
             alt="avatar"
             className="rounded-full bg-secondary"
           />
-          <Stats page={page} />
+          <Stats page={page} lang={lang} />
         </div>
         <p
           className="max-w-lg animate-in text-primary"
@@ -73,7 +73,7 @@ export default async function Home({
           </li>
           <li className="transition-opacity">
             <Link
-              href="/links"
+              href={`/${lang}/links`}
               className="flex items-center gap-2 no-underline"
             >
               <ArrowUpRightIcon className="h-5 w-5" />
@@ -87,9 +87,9 @@ export default async function Home({
         style={{ "--index": 3 } as React.CSSProperties}
       >
         <h2 className="text-secondary">{page.assets.latestPost}</h2>
-        <PostList page={page} posts={posts} />
+        <PostList posts={posts} page={page} />
         <Link
-          href="/blog"
+          href={`/${lang}/blog`}
           className="text-secondary underline underline-offset-4 hover:text-primary"
         >
           {page.assets.seeAll}

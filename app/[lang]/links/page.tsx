@@ -2,8 +2,16 @@ import Image from "next/image";
 import Link from "@/components/ui/Link";
 import ConnectLinks from "@/components/ConnectLinks";
 import avatar from "/public/avatar.png";
+import { Locale } from "@/i18n.config";
+import { getDictionary } from "@/lib/dictionary";
 
-export default function Links() {
+export default async function Links({
+  params: { lang },
+}: {
+  params: { lang: Locale };
+}) {
+  const { page } = await getDictionary(lang);
+
   return (
     <>
       <div className="flex flex-col gap-16 md:gap-24">
@@ -21,11 +29,10 @@ export default function Links() {
             style={{ "--index": 2 } as React.CSSProperties}
           >
             <h1 className="text-center text-2xl font-bold tracking-tight">
-              Rohitha Rathnayake
+              {page.home.name}
             </h1>
             <p className="mx-auto max-w-sm text-center text-secondary">
-              Software engineer who loves building cool things with code. I also
-              enjoy reading the latest tech news and learning new things.
+              {page.links.description}
             </p>
           </div>
         </div>

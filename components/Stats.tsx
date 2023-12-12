@@ -31,7 +31,7 @@ export function GitHub() {
   return addCommas(githubData?.stars);
 }
 
-export default function Stats({ page }: { page: any }) {
+export default function Stats({ page, lang }: { page: any; lang: any }) {
   const { theme } = useTheme();
   const username = "Rohitha97";
 
@@ -61,7 +61,7 @@ export default function Stats({ page }: { page: any }) {
             <FlipNumber>
               {githubData ? addCommas(githubData?.stars) : "000"}
             </FlipNumber>
-            <span> Repository Stars</span>
+            <span> {page.home.repoStars}</span>
           </div>
         </Link>
       </li>
@@ -75,18 +75,18 @@ export default function Stats({ page }: { page: any }) {
             <FlipNumber>
               {githubData ? addCommas(githubData?.repoCount) : "000"}
             </FlipNumber>
-            <span> Projects</span>
+            <span> {page.home.repos}</span>
           </div>
         </Link>
       </li>
       <li className="transition-opacity">
-        <Link className="flex items-center gap-3" href="/blog">
+        <Link className="flex items-center gap-3" href={`/${lang}/blog`}>
           <ArrowTrendingUpIcon className="h-5 w-5" />
           <div>
             <FlipNumber>
               {postsData ? addCommas(postsData?.total) : "0,000"}
             </FlipNumber>
-            <span> Total Blog Views</span>
+            <span> {page.home.blogViews}</span>
           </div>
         </Link>
       </li>

@@ -13,6 +13,8 @@ import kaprukaLogo from "public/work/kapruka.png";
 import teamKapruka from "public/gallery/team-kapruka.jpg";
 import teamDbeeta from "public/gallery/team-dbeeta.jpg";
 import logo from "public/logo/icon-512.png";
+import { Locale } from "@/i18n.config";
+import { getDictionary } from "@/lib/dictionary";
 
 export const metadata: Metadata = {
   title: "About | Rohitha Rathnayake",
@@ -20,18 +22,24 @@ export const metadata: Metadata = {
     "I am a full-stack software engineer who basically just enjoys creating things.",
 };
 
-export default function About() {
+export default async function About({
+  params: { lang },
+}: {
+  params: { lang: Locale };
+}) {
+  const { page } = await getDictionary(lang);
+
   return (
     <div className="flex flex-col gap-16 md:gap-24">
       <div>
         <h1 className="animate-in text-3xl font-bold tracking-tight">
-          About Me
+          {page.about.title}
         </h1>
         <p
           className="animate-in text-secondary"
           style={{ "--index": 1 } as React.CSSProperties}
         >
-          Just a quick glimpse.
+          {page.about.tag}
         </p>
       </div>
       <div className="mb-8 lg:hidden">
@@ -70,30 +78,24 @@ export default function About() {
         className="flex animate-in flex-col gap-16 md:gap-24"
         style={{ "--index": 3 } as React.CSSProperties}
       >
-        <Section heading="About" headingAlignment="left">
+        <Section heading={page.about.title} headingAlignment="left">
           <div className="flex flex-col gap-6">
-            <p>Hello world, I&apos;m Rohitha Rathnayake!</p>
+            <p>{page.about.description1}</p>
 
-            <p>
-              I have a passion for full-stack development and am constantly
-              looking for ways to incorporate it into my engineering work.
-            </p>
-            <p>
-              In addition to coding, I&apos;m a curious explorer who enjoys
-              learning about other cultures and languages.
-            </p>
-            <p>
-              When I&apos;m nnot at my desk, you might find me traveling,
-              shopping, or at a DJ party :)
-            </p>
+            <p>{page.about.description2}</p>
+            <p>{page.about.description3}</p>
+            <p>{page.about.description4}</p>
           </div>
         </Section>
 
-        <Section heading="Connect" headingAlignment="left">
+        <Section heading={page.about.connect} headingAlignment="left">
           <div className="flex w-full flex-col gap-8">
             <p>
-              Have a question or want to work with me? Feel free to{" "}
-              <Link href="mailto:rohith_rathnayake@yahoo.com">email me</Link>.
+              {page.about.connectDescription}{" "}
+              <Link href="mailto:rohith_rathnayake@yahoo.com">
+                {page.assets.emailMe}
+              </Link>
+              .
             </p>
             <ul className="animated-list grid flex-grow grid-cols-1 gap-2 md:grid-cols-2">
               {ConnectLinks.map((link) => (
@@ -125,28 +127,23 @@ export default function About() {
           </div>
         </Section>
 
-        <Section heading="Work" headingAlignment="left">
+        <Section heading={page.about.work} headingAlignment="left">
           <div className="flex w-full flex-col gap-8">
             <p>
-              {new Date().getFullYear() - 2022}+ years of professional
-              development experience.
+              {new Date().getFullYear() - 2022}+ {page.about.workDescription1}
             </p>
             <p>
-              Leveraging my passion for cutting-edge technology, I began my
-              career as a freelancer, gaining valuable experience and honing my
-              skills. I then transitioned to working at{" "}
+              {page.about.workDescription2}
               <Link className="underline" href="https://kapruka.com">
                 Kapruka
-              </Link>{" "}
-              , one of Sri Lanka&apos;s largest e-commerce platforms, where I
-              further developed my expertise. Subsequently, I joined{" "}
+              </Link>
+              {page.about.workDescription3}
               <Link className="underline" href="https://dbeeta.com">
                 Dbeeta
-              </Link>{" "}
-              , an Italian startup, as a full-stack engineer, contributing to
-              their innovative projects and expanding my knowledge.
+              </Link>
+              {page.about.workDescription4}
             </p>
-            <Workplaces items={workplaces} />
+            <Workplaces items={workplaces} lang={lang} />
           </div>
         </Section>
       </div>
@@ -156,24 +153,48 @@ export default function About() {
 
 const workplaces = [
   {
-    title: "Associate Software Engineer",
     company: "Dbeeta Software Solutions",
-    time: "Jan 2023 - Oct 2023",
     imageSrc: dbeetaLogo,
     link: "https://dbeeta.it",
+    translations: {
+      title: {
+        en: "Software Engineer",
+        jp: "ソフトウェア エンジニア",
+      },
+      time: {
+        en: "Jan 2023 - Oct 2023",
+        jp: "2023年1月 - 2023年10月",
+      },
+    },
   },
   {
-    title: "Software Developer Intern",
     company: "Kapruka Holding PLC",
-    time: "Sap 2022 - Jan 2023",
     imageSrc: kaprukaLogo,
     link: "https://kapruka.com/",
+    translations: {
+      title: {
+        en: "Software Developer Intern",
+        jp: "ソフトウェア エンジニア インターン",
+      },
+      time: {
+        en: "Sep 2022 - Jan 2023",
+        jp: "2022年9月 - 2023年1月",
+      },
+    },
   },
   {
-    title: "Freelancing Developer",
     company: "-",
-    time: "Fab 2022 - Present",
     imageSrc: logo,
     link: "/",
+    translations: {
+      title: {
+        en: "Freelancing Developer",
+        jp: "フリーランス開発者",
+      },
+      time: {
+        en: "Fab 2022 - Present",
+        jp: "2022年2月 - 現在",
+      },
+    },
   },
 ];

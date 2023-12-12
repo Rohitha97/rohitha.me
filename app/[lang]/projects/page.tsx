@@ -4,14 +4,21 @@ import Link from "next/link";
 import clsx from "clsx";
 import { allProjects, Project } from ".contentlayer/generated";
 import Halo from "@/components/ui/Halo";
+import { Locale } from "@/i18n.config";
+import { getDictionary } from "@/lib/dictionary";
 
 export const metadata: Metadata = {
   title: "Projects | Rohitha Rathnayake",
   description: "Here are some of the projects I've worked on.",
 };
 
-export default function Blog() {
+export default async function Blog({
+  params: { lang },
+}: {
+  params: { lang: Locale };
+}) {
   const projects = allProjects;
+  const { page } = await getDictionary(lang);
 
   return (
     <div className="mx-auto max-w-[700px]">
@@ -19,13 +26,13 @@ export default function Blog() {
         <div className="flex flex-col gap-8">
           <div>
             <h1 className="animate-in text-3xl font-bold tracking-tight">
-              Projects
+              {page.project.title}
             </h1>
             <p
               className="animate-in text-secondary"
               style={{ "--index": 1 } as React.CSSProperties}
             >
-              Here are some of the projects I&apos;ve worked on.
+              {page.project.tag}
             </p>
           </div>
         </div>

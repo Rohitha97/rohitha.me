@@ -55,7 +55,8 @@ export default function PostList({ posts, page }: PostListProps) {
       onMouseMove={(e) => handleMouseMove(e)}
       className="animated-list flex flex-col"
     >
-      {posts.length === 0 && <p>{page.assets.noPosts}</p>}
+      {page && page.home && posts.length === 0 && <p>{page.assets.noPosts}</p>}
+
       {posts.map((post) => (
         <Post key={post.slug} post={post} mousePosition={mousePosition} />
       ))}

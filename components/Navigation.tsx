@@ -13,14 +13,6 @@ import { Locale } from "@/i18n.config";
 import LanguageSwitcher from "./LanguageSwitcher";
 import MobileMenu from "./MobileMenu";
 
-interface NavigationData {
-  home: string;
-  blog: string;
-  about: string;
-  projects: string;
-  menu: string;
-}
-
 export default async function Navigation({ lang }: { lang: Locale }) {
   const { navigation } = await getDictionary(lang);
 
