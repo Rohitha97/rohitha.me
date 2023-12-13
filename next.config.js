@@ -8,6 +8,7 @@ const nextConfig = {
   images: {
     domains: [
       "localhost",
+      "res.cloudinary.com",
       "tailwindui.com",
       "images.unsplash.com",
       "cdn.dribbble.com",

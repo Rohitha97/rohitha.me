@@ -6,7 +6,6 @@
     "projects": "Projects",
     "menu": "Menu"
   },
-
   "page": {
     "home": {
       "name": "Rohitha Rathnayake",
@@ -37,7 +36,12 @@
     },
     "project": {
       "title": "Projects",
-      "tag": "Here are some of the projects I've worked on."
+      "tag": "Here are some of the projects I've worked on.",
+      "visitProject": "Visit Project",
+      "Tags": "Tags",
+      "connect": "Need more project details, or interested in working together? Reach out to me directly at",
+      "connect1": ". I'd be happy to connect!",
+      "allProject": "All Projects"
     },
     "links": {
       "description": "Software engineer who loves building cool things with code. I also enjoy reading the latest tech news and learning new things."

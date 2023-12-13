@@ -1,9 +1,9 @@
 import { Metadata } from "next";
 import { allPosts } from ".contentlayer/generated";
 import PostList from "./components/ui/PostList";
-import NewsletterSignupForm from "./components/ui/NewsletterSignupForm";
 import { Locale } from "@/i18n.config";
 import { getDictionary } from "@/lib/dictionary";
+import React from "react";
 
 export const metadata: Metadata = {
   title: "Blog | Rohitha Rathnayake",

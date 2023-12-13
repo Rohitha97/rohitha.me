@@ -20,8 +20,6 @@ export default async function Blog({
   const projects = allProjects;
   const { page } = await getDictionary(lang);
 
-  console.log(projects);
-
   return (
     <div className="mx-auto max-w-[700px]">
       <div className="flex flex-col gap-16 md:gap-24 ">
@@ -50,12 +48,12 @@ export default async function Blog({
               )}
             >
               <Link
-                href={`${lang}/projects/${project.slug}`}
+                href={`/${lang}/projects/${project.slug}`}
                 className="aspect-video w-full select-none overflow-clip rounded-lg border border-secondary bg-tertiary md:w-2/5"
               >
                 <Halo strength={10}>
                   <Image
-                    src={`/public${project.image}`}
+                    src={project.image}
                     alt={project.title}
                     layout="fill"
                     objectFit="cover"
@@ -66,16 +64,16 @@ export default async function Blog({
               <div className="w-full space-y-2 md:w-3/5">
                 <div>
                   <Link
-                    href={`${lang}/projects/${project.slug}`}
+                    href={`/${lang}/projects/${project.slug}`}
                     className="font-medium text-primary hover:underline"
                   >
-                    {project.title}
+                    {lang === "en" ? project.title : project.title_jp}
                   </Link>
                   <time className="text-secondary"> · {project.time}</time>
                 </div>
 
                 <p className="line-clamp-3 text-tertiary">
-                  {project.description}
+                  {lang === "en" ? project.description : project.description_jp}
                 </p>
               </div>
             </li>

@@ -40,7 +40,6 @@ export async function GET(req: NextRequest) {
           },
         });
         viewCount = updatedPost.views;
-        console.log("one test", viewCount);
       }
     } else {
       // Get view count without incrementing in local environment
@@ -53,8 +52,6 @@ export async function GET(req: NextRequest) {
       if (post) {
         viewCount = post.views;
       }
-      console.log("two test", viewCount);
-      console.log("two test", slug);
     }
 
     return new Response(JSON.stringify({ Views: viewCount }), {

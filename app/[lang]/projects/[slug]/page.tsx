@@ -3,14 +3,24 @@ import { notFound } from "next/navigation";
 
 import Link from "@/components/ui/Link";
 import Mdx from "@/components/ui/MdxWrapper";
+import { Locale } from "@/i18n.config";
+import { getDictionary } from "@/lib/dictionary";
 
 type PostProps = {
   post: PostType;
   related: PostType[];
 };
 
-export default function Project({ params }: { params: any }) {
+export default async function Project({
+  params,
+  params: { lang },
+}: {
+  params: any;
+  lang: Locale;
+}) {
   const post = allProjects.find((post) => post.slug === params.slug);
+
+  const { page } = await getDictionary(lang);
 
   if (!post) {
     notFound();
@@ -26,19 +36,19 @@ export default function Project({ params }: { params: any }) {
               <>
                 <span>&middot;</span>
                 <Link href={post.url} className="hover:text-primary">
-                  Visit Project
+                  {page.project.visitProject}
                 </Link>
               </>
             )}
           </div>
           <h1 className="text-3xl font-bold leading-tight tracking-tight text-primary">
-            {post.title}
+            {lang === "en" ? post.title : post.title_jp}
           </h1>
           <p
             className="animate-in text-lg leading-tight text-secondary md:text-xl"
             style={{ "--index": 1 } as React.CSSProperties}
           >
-            {post.description}
+            {lang === "en" ? post.description : post.description_jp}
           </p>
         </div>
 
@@ -52,7 +62,7 @@ export default function Project({ params }: { params: any }) {
       </article>
       <div className="flex flex-col gap-20">
         <div className="flex flex-col gap-6">
-          <h2>Tags</h2>
+          <h2> {page.project.Tags}</h2>
           <div className="flex flex-wrap gap-3 ">
             {post.tags.map((tag: string) => (
               <div
@@ -68,15 +78,14 @@ export default function Project({ params }: { params: any }) {
         <div className="flex flex-col gap-6">
           <h2>Contact</h2>
           <p className="max-w-lg text-secondary">
-            Need more project details, or interested in working together? Reach
-            out to me directly at{" "}
+            {page.project.connect}
             <a
-              href="mailto:contact@rohitha.me"
+              href="mailto:rohith_rathnayake@yahoo.com"
               className="text-primary underline"
             >
-              te@rohitha.me
+              rohith_rathnayake@yahoo.com
             </a>
-            . I&apos;d be happy to connect!{" "}
+            {page.project.connect1}{" "}
           </p>
         </div>
 

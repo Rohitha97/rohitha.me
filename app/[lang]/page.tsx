@@ -23,6 +23,7 @@ export default async function Home({
     .filter((_, i) => i < 3);
 
   const { page } = await getDictionary(lang);
+  console.log(lang);
 
   return (
     <div className="flex flex-col gap-16 md:gap-24">

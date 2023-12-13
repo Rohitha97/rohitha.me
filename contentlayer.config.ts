@@ -15,11 +15,17 @@ const postComputedFields: ComputedFields = {
   },
   image: {
     type: "string",
-    resolve: (doc) => `/blog/${getSlug(doc)}/image.png`,
+    resolve: (doc) =>
+      `https://res.cloudinary.com/dsprb0p8v/image/upload/f_auto,q_auto/v1/portfolio/blog/${getSlug(
+        doc,
+      )}/image`,
   },
   og: {
     type: "string",
-    resolve: (doc) => `/blog/${getSlug(doc)}/image.png`,
+    resolve: (doc) =>
+      `https://res.cloudinary.com/dsprb0p8v/image/upload/f_auto,q_auto/v1/portfolio/blog/${getSlug(
+        doc,
+      )}/image`,
   },
 };
 
@@ -46,7 +52,10 @@ const projectComputedFields: ComputedFields = {
   },
   image: {
     type: "string",
-    resolve: (doc) => `/projects/${getSlug(doc)}/image.png`,
+    resolve: (doc) =>
+      `https://res.cloudinary.com/dsprb0p8v/image/upload/f_auto,q_auto/v1/portfolio/projects/${getSlug(
+        doc,
+      )}/image`,
   },
 };
 
@@ -56,7 +65,9 @@ export const Project = defineDocumentType(() => ({
   contentType: "mdx",
   fields: {
     title: { type: "string", required: true },
+    title_jp: { type: "string", required: true },
     description: { type: "string", required: true },
+    description_jp: { type: "string", required: true },
     time: { type: "string", required: true },
     url: { type: "string", required: false },
     tags: { type: "json", required: false },

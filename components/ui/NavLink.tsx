@@ -21,7 +21,13 @@ export default function NavLink({
   const pathname = usePathname();
   const isDefaultLang = lang === i18n.defaultLocale;
   const path = isDefaultLang ? href : `/${lang}${href}`;
+  const seg = pathname.split("/").slice(2, 3).join("/");
+  const defSeg = seg === "" ? pathname : `/${seg}`;
   const active = path === pathname;
+
+  // console.log("defseg - ", seg);
+  // console.log("pathname - ", pathname);
+  // console.log("path - ", path);
 
   return (
     <Link
