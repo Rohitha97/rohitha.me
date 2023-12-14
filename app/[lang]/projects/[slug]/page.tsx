@@ -76,7 +76,7 @@ export default async function Project({
         </div>
 
         <div className="flex flex-col gap-6">
-          <h2>Contact</h2>
+          <h2>{page.about.connect}</h2>
           <p className="max-w-lg text-secondary">
             {page.project.connect}
             <a
@@ -90,7 +90,7 @@ export default async function Project({
         </div>
 
         <Link href="/projects" className="text-primary underline">
-          ← All Projects
+          ← {page.project.allProject}
         </Link>
       </div>
 
