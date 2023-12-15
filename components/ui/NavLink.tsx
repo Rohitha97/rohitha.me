@@ -25,10 +25,6 @@ export default function NavLink({
   const defSeg = seg === "" ? pathname : `/${seg}`;
   const active = path === pathname;
 
-  // console.log("defseg - ", seg);
-  // console.log("pathname - ", pathname);
-  // console.log("path - ", path);
-
   return (
     <Link
       className={clsx(

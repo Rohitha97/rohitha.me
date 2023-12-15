@@ -6,10 +6,10 @@ import Mdx from "@/components/ui/MdxWrapper";
 import { Locale } from "@/i18n.config";
 import { getDictionary } from "@/lib/dictionary";
 
-type PostProps = {
-  post: PostType;
-  related: PostType[];
-};
+// type PostProps = {
+//   post: PostType;
+//   related: PostType[];
+// };
 
 export default async function Project({
   params,
