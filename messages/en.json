@@ -28,11 +28,14 @@
       "workDescription1": " years of professional development experience.",
       "workDescription2": "Leveraging my passion for cutting-edge technology, I began my career as a freelancer, gaining valuable experience and honing my skills. I then transitioned to working at ",
       "workDescription3": ", one of Sri Lanka's largest e-commerce platforms, where I further developed my expertise. Subsequently, I joined, ",
-      "workDescription4": ", an Italian startup, as a full-stack engineer, contributing to their innovative projects and expanding my knowledge."
+      "workDescription4": ", an Italian startup, as a full-stack engineer, contributing to their innovative projects and expanding my knowledge.",
+      "education": "Education",
+      "eduDescription": "I graduated from Horizon Campus with a Bachelor of Information Technology (Hons) in Networking and Mobile Computing. During my studies, I served as a member of both the student council and the Horizon IT Society, participating in various extracurricular activities."
     },
     "blog": {
       "title": "Blog",
-      "tag": " posts about code, tech, more ..."
+      "tag": " posts about code, tech, more ...",
+      "allBlog": "All Blogs"
     },
     "project": {
       "title": "Projects",

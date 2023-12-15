@@ -37,9 +37,10 @@ function getRelativeCoordinates(
 type PostListProps = {
   posts: PostType[];
   page: any;
+  lang: any;
 };
 
-export default function PostList({ posts, page }: PostListProps) {
+export default function PostList({ lang, posts, page }: PostListProps) {
   const [mousePosition, setMousePosition] = useState({
     x: 240,
     y: 0,
@@ -58,7 +59,12 @@ export default function PostList({ posts, page }: PostListProps) {
       {page && page.home && posts.length === 0 && <p>{page.assets.noPosts}</p>}
 
       {posts.map((post) => (
-        <Post key={post.slug} post={post} mousePosition={mousePosition} />
+        <Post
+          key={post.slug}
+          post={post}
+          lang={lang}
+          mousePosition={mousePosition}
+        />
       ))}
     </ul>
   );

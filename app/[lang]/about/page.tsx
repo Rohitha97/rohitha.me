@@ -9,6 +9,7 @@ import Gallery from "./components/Gallery";
 
 import dbeetaLogo from "public/work/dbeeta.jpg";
 import kaprukaLogo from "public/work/kapruka.png";
+import horizonLogo from "public/work/Untitled.png";
 
 import teamKapruka from "public/gallery/team-kapruka.jpg";
 import teamDbeeta from "public/gallery/team-dbeeta.jpg";
@@ -146,6 +147,13 @@ export default async function About({
             <Workplaces items={workplaces} lang={lang} />
           </div>
         </Section>
+
+        <Section heading={page.about.education} headingAlignment="left">
+          <div className="flex w-full flex-col gap-8">
+            <p>{page.about.eduDescription}</p>
+            <Workplaces items={academy} lang={lang} />
+          </div>
+        </Section>
       </div>
     </div>
   );
@@ -194,6 +202,24 @@ const workplaces = [
       time: {
         en: "Fab 2022 - Present",
         jp: "2022年2月 - 現在",
+      },
+    },
+  },
+];
+
+const academy = [
+  {
+    company: "Horizon Campus",
+    imageSrc: horizonLogo,
+    link: "https://horizoncampus.edu.lk/",
+    translations: {
+      title: {
+        en: "BIT(hons) in Networking and Mobile Computing",
+        jp: "情報技術学士（栄誉）ネットワークおよびモバイルコンピューティング",
+      },
+      time: {
+        en: "May 2019 - Aug 2023",
+        jp: "2019年5月 - 2023年8月",
       },
     },
   },

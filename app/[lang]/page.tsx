@@ -23,7 +23,6 @@ export default async function Home({
     .filter((_, i) => i < 3);
 
   const { page } = await getDictionary(lang);
-  console.log(lang);
 
   return (
     <div className="flex flex-col gap-16 md:gap-24">
@@ -87,7 +86,7 @@ export default async function Home({
         style={{ "--index": 3 } as React.CSSProperties}
       >
         <h2 className="text-secondary">{page.assets.latestPost}</h2>
-        <PostList posts={posts} page={page} />
+        <PostList posts={posts} lang={lang} page={page} />
         <Link
           href={`/${lang}/blog`}
           className="text-secondary underline underline-offset-4 hover:text-primary"

@@ -42,7 +42,7 @@ export default async function Blog({
         className="animate-in"
         style={{ "--index": 2 } as React.CSSProperties}
       >
-        <PostList posts={posts} page={page} />
+        <PostList posts={posts} page={page} lang={lang} />
       </div>
     </div>
   );

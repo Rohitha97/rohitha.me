@@ -6,7 +6,13 @@ import FlipNumber from "@/components/FlipNumber";
 import useSWR from "swr";
 import fetcher from "@/lib/fetcher";
 
-export default function ViewCounter({ post }: { post: PostType }) {
+export default function ViewCounter({
+  lang,
+  post,
+}: {
+  post: PostType;
+  lang: any;
+}) {
   const { data } = useSWR(`/api/prisma/hitsSlug?slug=${post.slug}`, fetcher, {
     revalidateOnFocus: false,
   });
@@ -14,7 +20,7 @@ export default function ViewCounter({ post }: { post: PostType }) {
 
   return (
     <span>
-      <FlipNumber>{views}</FlipNumber> views
+      <FlipNumber>{views}</FlipNumber> {lang === "en" ? "views" : "ビュー"}
     </span>
   );
 }

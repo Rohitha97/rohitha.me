@@ -11,6 +11,7 @@ import Avatar from "@/public/avatar.png";
 import { Locale } from "@/i18n.config";
 import ViewCounter from "../components/ui/ViewCounter";
 import Mdx from "@/components/ui/MdxWrapper";
+import { getDictionary } from "@/lib/dictionary";
 
 type PostProps = {
   post: PostType;
@@ -38,6 +39,7 @@ export async function generateMetadata(
 
   const {
     title,
+    title_jp,
     publishedAt: publishedTime,
     summary: description,
     image,
@@ -70,10 +72,7 @@ export async function generateMetadata(
 export default async function Post({ params }: { params: any }) {
   const post = allPosts.find((post) => post.slug === params.slug);
 
-  // const seoTitle = `${post.title} | Rohitha Rathnayake`;
-  // const seoDesc = `${post.summary}`;
-  // const url = `https://rohitha.me/blog/${post.slug}`;
-  // const MDXContent = useMDXComponent(post?.body.code);
+  const { page } = await getDictionary(params.lang);
 
   if (!post) {
     notFound();
@@ -88,10 +87,10 @@ export default async function Post({ params }: { params: any }) {
         >
           <div className="max-w-xl space-y-2">
             <h1 className="text-3xl font-bold leading-tight tracking-tight text-primary">
-              {post.title}
+              {params.lang === "en" ? post.title : post.title_jp}
             </h1>
             <p className="text-lg leading-tight text-secondary md:text-xl">
-              {post.summary}
+              {params.lang === "en" ? post.summary : post.summary_jp}
             </p>
           </div>
 
@@ -107,13 +106,15 @@ export default async function Post({ params }: { params: any }) {
               <p className="font-medium text-primary">Rohitha Rathnayake</p>
               <p className="text-secondary">
                 <time dateTime={post.publishedAt}>
-                  {formatDate(post.publishedAt)}
+                  {params.lang === "en"
+                    ? formatDate(post.publishedAt)
+                    : post.publishedAt_jp}
                 </time>
                 {post.updatedAt
                   ? `(Updated ${formatDate(post.updatedAt)})`
                   : ""}
                 {" · "}
-                <ViewCounter post={post} />
+                <ViewCounter lang={params.lang} post={post} />
               </p>
             </div>
           </div>
@@ -148,7 +149,7 @@ export default async function Post({ params }: { params: any }) {
 
       {/* <Subscribe /> */}
 
-      <Link href={`/${params.lang}/blog`}>← All Blogs</Link>
+      <Link href={`/${params.lang}/blog`}>← {page.blog.allBlog}</Link>
     </div>
   );
 }

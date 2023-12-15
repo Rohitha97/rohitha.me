@@ -89,7 +89,7 @@ export default async function Project({
           </p>
         </div>
 
-        <Link href="/projects" className="text-primary underline">
+        <Link href={`/${lang}/projects`} className="text-primary underline">
           ← {page.project.allProject}
         </Link>
       </div>

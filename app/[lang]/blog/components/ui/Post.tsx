@@ -8,15 +8,16 @@ import React from "react";
 
 type PostProps = {
   post: Post;
+  lang: any;
   mousePosition?: {
     x: number;
     y: number;
   };
 };
 
-export default function Post({ post, mousePosition }: PostProps) {
+export default function Post({ lang, post, mousePosition }: PostProps) {
   const { publishedAt, slug, title, image } = post;
-  const publishDate = new Date(publishedAt);
+  let publishDate = new Date(publishedAt);
   const showNewBadge =
     Math.abs(new Date(publishDate).getTime() - new Date().getTime()) /
       (24 * 60 * 60 * 1000) <
@@ -25,8 +26,14 @@ export default function Post({ post, mousePosition }: PostProps) {
   const imageWidth = 300;
   const imageOffset = 24;
 
+  let publishDateString: string = publishDate.toLocaleDateString();
+  let postTitle = title;
+  if (lang === "jp") {
+    postTitle = post.title_jp;
+    publishDateString = new Date(publishDate).toLocaleDateString("ja-JP");
+  }
   return (
-    <li className="py-3 group transition-opacity">
+    <li className="group py-3 transition-opacity">
       <div className="transition-opacity">
         {image && mousePosition && (
           <motion.div
@@ -37,22 +44,33 @@ export default function Post({ post, mousePosition }: PostProps) {
             initial={false}
             transition={{ ease: "easeOut" }}
             style={{ width: imageWidth, height: imageHeight }}
-            className="absolute z-10 hidden overflow-hidden rounded shadow-sm pointer-events-none sm:group-hover:block bg-primary"
+            className="pointer-events-none absolute z-10 hidden overflow-hidden rounded bg-primary shadow-sm sm:group-hover:block"
           >
             <Image
               src={image}
-              alt={title}
+              alt={postTitle}
               width={imageWidth}
               height={imageHeight}
             />
           </motion.div>
         )}
-        <div className="flex justify-between gap-6 items-center">
+        <div className="flex items-center justify-between gap-6">
           <Section heading={formatDate(publishedAt)}>
-            <Link href={`/blog/${slug}`} className="font-medium leading-tight">{title}</Link>
+            <Link
+            
+              href={`/${lang}/blog/${slug}`}
+              className="font-medium leading-tight"
+            >
+              {postTitle}
+            </Link>
           </Section>
-          <div className="md:hidden aspect-square min-w-24 w-24 h-24 relative drop-shadow-sm">
-            <Image src={image} alt={title} fill className="object-cover rounded"/>
+          <div className="min-w-24 relative aspect-square h-24 w-24 drop-shadow-sm md:hidden">
+            <Image
+              src={image}
+              alt={postTitle}
+              fill
+              className="rounded object-cover"
+            />
           </div>
         </div>
       </div>
