@@ -7,6 +7,7 @@ import { Locale, i18n } from "@/i18n.config";
 
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Navigation from "@/components/Navigation";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -43,6 +44,7 @@ export default function RootLayout({
             }
           >
             {children}
+            <SpeedInsights />
           </div>
         </ThemeProvider>
         <Analytics />
