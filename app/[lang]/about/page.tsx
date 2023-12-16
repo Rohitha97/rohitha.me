@@ -133,17 +133,9 @@ export default async function About({
             <p>
               {new Date().getFullYear() - 2022}+ {page.about.workDescription1}
             </p>
-            <p>
-              {page.about.workDescription2}
-              <Link className="underline" href="https://kapruka.com">
-                Kapruka
-              </Link>
-              {page.about.workDescription3}
-              <Link className="underline" href="https://dbeeta.com">
-                Dbeeta
-              </Link>
-              {page.about.workDescription4}
-            </p>
+            <p>{page.about.workDescription2}</p>
+            <p>{page.about.workDescription3}</p>
+            <p>{page.about.workDescription4}</p>
             <Workplaces items={workplaces} lang={lang} />
           </div>
         </Section>
@@ -151,6 +143,7 @@ export default async function About({
         <Section heading={page.about.education} headingAlignment="left">
           <div className="flex w-full flex-col gap-8">
             <p>{page.about.eduDescription}</p>
+            <p>{page.about.eduDescription1}</p>
             <Workplaces items={academy} lang={lang} />
           </div>
         </Section>
@@ -166,7 +159,7 @@ const workplaces = [
     link: "https://dbeeta.it",
     translations: {
       title: {
-        en: "Software Engineer",
+        en: "Associate Software Engineer",
         jp: "ソフトウェア エンジニア",
       },
       time: {
@@ -214,8 +207,8 @@ const academy = [
     link: "https://horizoncampus.edu.lk/",
     translations: {
       title: {
-        en: "BIT(hons) in Networking and Mobile Computing",
-        jp: "情報技術学士（栄誉）ネットワークおよびモバイルコンピューティング",
+        en: "BIT(Hons) in NMC",
+        jp: "BIT(Hons) in NMC",
       },
       time: {
         en: "May 2019 - Aug 2023",

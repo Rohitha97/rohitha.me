@@ -36,7 +36,7 @@ export default async function Navigation({ lang }: { lang: Locale }) {
             </li>
           ))}
         </ul>
-        <MobileMenu links={links} navigation={navigation} />
+        <MobileMenu lang={lang} links={links} navigation={navigation} />
 
         <div className="flex space-x-4">
           <div className="h-8 w-8">
