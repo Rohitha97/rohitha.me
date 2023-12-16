@@ -78,7 +78,7 @@ export default async function Project({
         <div className="flex flex-col gap-6">
           <h2>{page.about.connect}</h2>
           <p className="max-w-lg text-secondary">
-            {page.project.connect}
+            {page.project.connect}{" "}
             <a
               href="mailto:rohith_rathnayake@yahoo.com"
               className="text-primary underline"
