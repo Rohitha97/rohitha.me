@@ -6,21 +6,14 @@ import Mdx from "@/components/ui/MdxWrapper";
 import { Locale } from "@/i18n.config";
 import { getDictionary } from "@/lib/dictionary";
 
-// type PostProps = {
-//   post: PostType;
-//   related: PostType[];
-// };
-
 export default async function Project({
   params,
-  params: { lang },
 }: {
-  params: any;
-  lang: Locale;
+  params: { slug: string; lang: Locale };
 }) {
   const post = allProjects.find((post) => post.slug === params.slug);
 
-  const { page } = await getDictionary(lang);
+  const { page } = await getDictionary(params.lang);
 
   if (!post) {
     notFound();
@@ -42,13 +35,13 @@ export default async function Project({
             )}
           </div>
           <h1 className="text-3xl font-bold leading-tight tracking-tight text-primary">
-            {lang === "en" ? post.title : post.title_jp}
+            {params.lang === "en" ? post.title : post.title_jp}
           </h1>
           <p
             className="animate-in text-lg leading-tight text-secondary md:text-xl"
             style={{ "--index": 1 } as React.CSSProperties}
           >
-            {lang === "en" ? post.description : post.description_jp}
+            {params.lang === "en" ? post.description : post.description_jp}
           </p>
         </div>
 
@@ -89,7 +82,10 @@ export default async function Project({
           </p>
         </div>
 
-        <Link href={`/${lang}/projects`} className="text-primary underline">
+        <Link
+          href={`/${params.lang}/projects`}
+          className="text-primary underline"
+        >
           ← {page.project.allProject}
         </Link>
       </div>

@@ -13,11 +13,6 @@ import ViewCounter from "../components/ui/ViewCounter";
 import Mdx from "@/components/ui/MdxWrapper";
 import { getDictionary } from "@/lib/dictionary";
 
-type PostProps = {
-  post: PostType;
-  related: PostType[];
-};
-
 type Props = {
   params: {
     slug: string;
