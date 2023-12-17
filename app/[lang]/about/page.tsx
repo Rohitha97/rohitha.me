@@ -143,7 +143,6 @@ export default async function About({
         <Section heading={page.about.education} headingAlignment="left">
           <div className="flex w-full flex-col gap-8">
             <p>{page.about.eduDescription}</p>
-            <p>{page.about.eduDescription1}</p>
             <Workplaces items={academy} lang={lang} />
           </div>
         </Section>
