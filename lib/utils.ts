@@ -11,7 +11,7 @@ export function addCommas(x: any) {
 export function constructMetadata({
   title = "Rohitha Rathnayake",
   description = "I am a full-stack software engineer who basically just enjoys creating things.",
-  image = "/logo/play_store_512.png",
+  image = "public/logo/play_store_512.png",
   icons = "/favicon.ico",
   noIndex = false,
 }: {
