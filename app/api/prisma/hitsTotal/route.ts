@@ -1,3 +1,4 @@
+export const runtime = "nodejs";
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
@@ -9,8 +10,6 @@ export async function GET() {
         views: true,
       },
     });
-
-    // console.log(total);
 
     return Response.json({ total: total._sum.views });
   } catch (error) {
