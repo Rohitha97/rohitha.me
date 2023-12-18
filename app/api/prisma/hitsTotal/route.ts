@@ -1,16 +1,19 @@
-import { PrismaClient } from "@prisma/client/edge";
+import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 export async function GET() {
   try {
-    // get total views
-    const total = await prisma.post.aggregate({
-      _sum: {
-        views: true,
-      },
-    });
+    // get all posts
+    const posts = await prisma.post.findMany();
 
-    return Response.json({ total: total._sum.views });
+    // calculate total views
+    let total = 0;
+    for (const post of posts) {
+      total += post.views;
+    }
+    console.log(total);
+
+    return Response.json({ total });
   } catch (error) {
     console.error(error);
     return new Response("Something went wrong", { status: 200 });
