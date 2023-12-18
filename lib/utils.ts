@@ -1,8 +1,6 @@
 // lib/utils.ts
 
 import { Metadata } from "next";
-import logo from "../public/logo/play_store_512.png";
-
 export function addCommas(x: any) {
   if (x === undefined || x === null) return "0";
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");

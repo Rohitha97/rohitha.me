@@ -11,16 +11,6 @@ import FlipNumber from "@/components/FlipNumber";
 import fetcher from "@/lib/fetcher";
 import { addCommas } from "@/lib/utils";
 
-export function YouTube() {
-  const { data: youtubeData, error: youtubeDataError } = useSWR(
-    `/api/youtube`,
-    fetcher,
-  );
-
-  if (youtubeDataError) return <div>failed to load</div>;
-  return addCommas(youtubeData?.subscribers);
-}
-
 export function GitHub() {
   const { data: githubData, error: githubDataError } = useSWR(
     `/api/github?username=Rohitha97`,

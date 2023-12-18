@@ -53,6 +53,7 @@ export async function GET(req: NextRequest) {
     //     viewCount = post.views;
     //   }
     // }
+    console.log(viewCount);
 
     return new Response(JSON.stringify({ Views: viewCount }), {
       status: 200,
