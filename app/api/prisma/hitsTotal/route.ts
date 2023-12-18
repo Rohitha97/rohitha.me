@@ -11,7 +11,6 @@ export async function GET() {
     for (const post of posts) {
       total += post.views;
     }
-    console.log(total);
 
     return Response.json({ total });
   } catch (error) {
