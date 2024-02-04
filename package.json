@@ -44,7 +44,7 @@
     "react-icons": "^4.11.0",
     "rehype-prism-plus": "^1.6.3",
     "rehype-slug": "^6.0.0",
-    "sharp": "^0.33.0",
+    "sharp": "^0.33.2",
     "slugify": "^1.6.6",
     "swr": "^2.2.4",
     "tailwind-merge": "^1.14.0",
