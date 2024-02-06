@@ -19,7 +19,7 @@
     "@radix-ui/react-dropdown-menu": "^2.0.6",
     "@radix-ui/react-slot": "^1.0.2",
     "@vercel/analytics": "^1.1.2",
-    "@vercel/og": "^0.5.20",
+    "@vercel/og": "^0.6.2",
     "@vercel/speed-insights": "^1.0.2",
     "class-variance-authority": "^0.7.0",
     "cloudinary": "^1.41.0",
