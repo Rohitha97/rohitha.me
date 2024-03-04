@@ -55,7 +55,7 @@
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/typography": "^0.5.10",
     "@types/negotiator": "^0.6.3",
-    "@types/node": "^20.10.4",
+    "@types/node": "^20.11.24",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10",
