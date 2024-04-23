@@ -8,8 +8,8 @@ import localFont from "next/font/local";
 
 import village from "public/gallery/village.jpg";
 import random from "public/gallery/random-click.jpg";
-import teamKapruka from "public/gallery/team-kapruka.jpg";
-import teamDbeeta from "public/gallery/team-dbeeta.jpg";
+import sakura from "public/gallery/sakura.jpg";
+import japan from "public/gallery/japan.jpg";
 // import { ticket } from "/ticketing.woff2";
 
 import Halo from "@/components/ui/Halo";
@@ -147,10 +147,10 @@ export default function Gallery() {
           index={1}
         />
         <Photo
-          src={teamDbeeta}
+          src={japan}
           meta="2022-09-28"
-          alt="Random Click"
-          width={330}
+          alt="Japan "
+          width={230}
           height={250}
           rotate={6.3}
           left={188}
@@ -158,9 +158,9 @@ export default function Gallery() {
           flipDirection="left"
         />
         <Photo
-          src={teamKapruka}
+          src={sakura}
           meta="2022-10-25"
-          alt="Team Kapruka"
+          alt="Sakura"
           width={280}
           height={235}
           rotate={-5.4}
@@ -170,7 +170,7 @@ export default function Gallery() {
         <Photo
           src={random}
           meta="2023-04-16"
-          alt={"Team Dbeeta"}
+          alt={"Random Click"}
           width={230}
           height={250}
           rotate={7.6}

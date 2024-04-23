@@ -10,6 +10,7 @@ import Gallery from "./components/Gallery";
 import dbeetaLogo from "public/work/dbeeta.jpg";
 import kaprukaLogo from "public/work/kapruka.png";
 import horizonLogo from "public/work/Untitled.png";
+import humanLogo from "public/work/human_resocia_git_logo.jpeg";
 
 import village from "public/gallery/village.jpg";
 import random from "public/gallery/random-click.jpg";
@@ -152,6 +153,21 @@ export default async function About({
 }
 
 const workplaces = [
+  {
+    company: "Human Resocia Co., Ltd.",
+    imageSrc: humanLogo,
+    link: "https://resocia.jp/",
+    translations: {
+      title: {
+        en: "Software Engineer",
+        jp: "ソフトウェア エンジニア",
+      },
+      time: {
+        en: "Fab 2024 - Present",
+        jp: "2023年2月 - 現在",
+      },
+    },
+  },
   {
     company: "Dbeeta Software Solutions",
     imageSrc: dbeetaLogo,

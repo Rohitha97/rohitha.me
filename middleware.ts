@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import geoip from "geoip-lite";
 
 import { i18n } from "@/i18n.config";
 
@@ -15,6 +16,8 @@ function getLocale(request: NextRequest): string | undefined {
   const languages = new Negotiator({ headers: negotiatorHeaders }).languages();
 
   const locale = matchLocale(languages, locales, i18n.defaultLocale);
+  console.log("locale", locale);
+
   return locale;
 }
 

@@ -28,6 +28,7 @@
     "country-flag-icons": "^1.5.9",
     "date-fns": "^2.30.0",
     "framer-motion": "^10.16.4",
+    "geoip-lite": "^1.4.10",
     "i18next": "^23.7.8",
     "lucide-react": "^0.285.0",
     "negotiator": "^0.6.3",
@@ -54,6 +55,7 @@
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/typography": "^0.5.10",
+    "@types/geoip-lite": "^1.4.4",
     "@types/negotiator": "^0.6.3",
     "@types/node": "^20.10.4",
     "@types/react": "^18",
