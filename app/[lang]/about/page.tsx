@@ -11,6 +11,8 @@ import dbeetaLogo from "public/work/dbeeta.jpg";
 import kaprukaLogo from "public/work/kapruka.png";
 import horizonLogo from "public/work/Untitled.png";
 import humanLogo from "public/work/human_resocia_git_logo.jpeg";
+// TODO: Replace with actual Akkodis logo when available
+import akkodisLogo from "public/work/human_resocia_git_logo.jpeg";
 
 import village from "public/gallery/village.jpg";
 import random from "public/gallery/random-click.jpg";
@@ -154,6 +156,21 @@ export default async function About({
 
 const workplaces = [
   {
+    company: "Akkodis Consulting Ltd",
+    imageSrc: akkodisLogo, // TODO: Replace with actual Akkodis logo
+    link: "https://www.akkodis.com/",
+    translations: {
+      title: {
+        en: "Software Engineer",
+        jp: "ソフトウェア エンジニア",
+      },
+      time: {
+        en: "Jan 2025 - Present",
+        jp: "2025年1月 - 現在",
+      },
+    },
+  },
+  {
     company: "Human Resocia Co., Ltd.",
     imageSrc: humanLogo,
     link: "https://resocia.jp/",
@@ -163,8 +180,8 @@ const workplaces = [
         jp: "ソフトウェア エンジニア",
       },
       time: {
-        en: "Fab 2024 - Present",
-        jp: "2023年2月 - 現在",
+        en: "Feb 2024 - Dec 2024",
+        jp: "2024年2月 - 2024年12月",
       },
     },
   },
@@ -178,7 +195,7 @@ const workplaces = [
         jp: "ソフトウェア エンジニア",
       },
       time: {
-        en: "Jan 2023 - Nav 2023",
+        en: "Jan 2023 - Nov 2023",
         jp: "2023年1月 - 2023年11月",
       },
     },
@@ -208,7 +225,7 @@ const workplaces = [
         jp: "フリーランス開発者",
       },
       time: {
-        en: "Fab 2022 - Present",
+        en: "Feb 2022 - Present",
         jp: "2022年2月 - 現在",
       },
     },

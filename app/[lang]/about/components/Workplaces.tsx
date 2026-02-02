@@ -36,35 +36,47 @@ function Workplace({
   const content = (
     <>
       <div className="flex items-center gap-4">
-        <Image
-          src={imageSrc}
-          alt={company}
-          width={48}
-          height={48}
-          className={clsx(
-            "rounded-full",
-            company === "University of Houston" && "bg-neutral-50",
-          )}
-        />
+        <div className="relative overflow-hidden rounded-full transition-transform duration-300 ease-out hover:scale-105">
+          <Image
+            src={imageSrc}
+            alt={company}
+            width={48}
+            height={48}
+            className={clsx(
+              "rounded-full transition-all duration-300",
+              company === "University of Houston" && "bg-neutral-50",
+            )}
+          />
+        </div>
         <div className="flex flex-col gap-px">
-          <p className={link ? "external-arrow" : ""}>{titleTR}</p>
-          <p className="text-secondary">{company}</p>
+          <p className={clsx(
+            "font-medium transition-colors duration-200",
+            link ? "external-arrow" : ""
+          )}>{titleTR}</p>
+          <p className="text-secondary text-sm">{company}</p>
         </div>
       </div>
-      {timeTR && <time className="text-secondary">{timeTR}</time>}
+      {timeTR && (
+        <time className="text-secondary text-sm whitespace-nowrap">
+          {timeTR}
+        </time>
+      )}
     </>
   );
+  
   return (
     <li className="transition-opacity" key={company}>
       {link ? (
         <Link
           href={link}
-          className="-mx-3 -my-2 flex w-full justify-between px-3 py-2 no-underline"
+          className="workplace-item -mx-3 -my-2 flex w-full justify-between items-center px-3 py-2 no-underline rounded-xl hover:bg-tertiary/50 transition-all duration-300"
         >
           {content}
         </Link>
       ) : (
-        <div className="flex justify-between ">{content}</div>
+        <div className="workplace-item flex justify-between items-center rounded-xl transition-all duration-300">
+          {content}
+        </div>
       )}
     </li>
   );
@@ -78,7 +90,7 @@ export default function Workplaces({
   lang: Locale;
 }) {
   return (
-    <ul className="animated-list flex flex-col gap-8">
+    <ul className="animated-list flex flex-col gap-4">
       {items.map((workplace) => (
         <Workplace
           key={workplace.company}

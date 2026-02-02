@@ -181,8 +181,96 @@ input:-webkit-autofill:focus {
   }
 }
 
+/* Modern animation easing */
+:root {
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-elastic: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
 .animate-in {
   animation-delay: calc(var(--index) * 130ms);
+}
+
+/* Modern card hover effects */
+.card-hover {
+  transition: transform 0.3s var(--ease-smooth), 
+              box-shadow 0.3s var(--ease-smooth),
+              background-color 0.3s var(--ease-smooth);
+}
+
+.card-hover:hover {
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12),
+              0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.dark .card-hover:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4),
+              0 0 15px rgba(97, 102, 220, 0.15);
+}
+
+/* Subtle glow effects */
+.glow-hover {
+  transition: box-shadow 0.3s var(--ease-smooth),
+              filter 0.3s var(--ease-smooth);
+}
+
+.glow-hover:hover {
+  box-shadow: 0 0 20px rgba(97, 102, 220, 0.3),
+              0 0 40px rgba(97, 102, 220, 0.1);
+  filter: brightness(1.05);
+}
+
+/* Enhanced gradient animation */
+.gradient-animate {
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Smooth color transitions */
+* {
+  transition-property: color, background-color, border-color;
+  transition-duration: 0.15s;
+  transition-timing-function: var(--ease-smooth);
+}
+
+/* Override for elements that need instant transitions */
+button, a, input, textarea, select {
+  transition-property: color, background-color, border-color, box-shadow, transform, opacity;
+  transition-duration: 0.2s;
+  transition-timing-function: var(--ease-smooth);
+}
+
+/* Workplace item hover enhancement */
+.workplace-item {
+  transition: all 0.3s var(--ease-smooth);
+  border-radius: 12px;
+  padding: 12px;
+  margin: -12px;
+}
+
+.workplace-item:hover {
+  background-color: var(--gray-a3);
+  transform: translateX(4px);
+}
+
+/* Image hover scale */
+.img-hover-scale {
+  transition: transform 0.4s var(--ease-smooth);
+}
+
+.img-hover-scale:hover {
+  transform: scale(1.05);
 }
 
 .overflow-x-scroll.snap-x::-webkit-scrollbar {
