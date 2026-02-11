@@ -9,11 +9,13 @@ import { getDictionary } from "@/lib/dictionary";
 export default async function Project({
   params,
 }: {
-  params: { slug: string; lang: Locale };
+  params: Promise<{ slug: string; lang: string }>;
 }) {
-  const post = allProjects.find((post) => post.slug === params.slug);
+  const { slug, lang: langStr } = await params;
+  const lang = langStr as Locale;
+  const post = allProjects.find((post) => post.slug === slug);
 
-  const { page } = await getDictionary(params.lang);
+  const { page } = await getDictionary(lang);
 
   if (!post) {
     notFound();
@@ -35,13 +37,13 @@ export default async function Project({
             )}
           </div>
           <h1 className="text-3xl font-bold leading-tight tracking-tight text-primary">
-            {params.lang === "en" ? post.title : post.title_jp}
+            {lang === "en" ? post.title : post.title_jp}
           </h1>
           <p
             className="animate-in text-lg leading-tight text-secondary md:text-xl"
             style={{ "--index": 1 } as React.CSSProperties}
           >
-            {params.lang === "en" ? post.description : post.description_jp}
+            {lang === "en" ? post.description : post.description_jp}
           </p>
         </div>
 
@@ -83,7 +85,7 @@ export default async function Project({
         </div>
 
         <Link
-          href={`/${params.lang}/projects`}
+          href={`/${lang}/projects`}
           className="text-primary underline"
         >
           ← {page.project.allProject}

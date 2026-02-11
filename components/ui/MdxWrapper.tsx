@@ -1,12 +1,11 @@
 "use client";
-import { useMDXComponent } from "next-contentlayer/hooks";
+import { useMDXComponent } from "next-contentlayer2/hooks";
 
 import CustomImage from "@/app/[lang]/blog/components/ui/Image";
 import Link from "@/components/ui/Link";
 import Alert from "../../app/[lang]/blog/components/mdx/Alert";
 import Parallax from "../../app/[lang]/blog/components/mdx/parallax";
 import LinkPreview from "../../app/[lang]/blog/components/mdx/LinkPreview";
-import path from "path";
 
 interface CustomLinkProps
   extends React.DetailedHTMLProps<

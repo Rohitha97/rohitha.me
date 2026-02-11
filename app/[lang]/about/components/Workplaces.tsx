@@ -44,7 +44,6 @@ function Workplace({
             height={48}
             className={clsx(
               "rounded-full transition-all duration-300",
-              company === "University of Houston" && "bg-neutral-50",
             )}
           />
         </div>

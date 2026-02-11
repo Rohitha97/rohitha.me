@@ -11,8 +11,7 @@ import dbeetaLogo from "public/work/dbeeta.jpg";
 import kaprukaLogo from "public/work/kapruka.png";
 import horizonLogo from "public/work/Untitled.png";
 import humanLogo from "public/work/human_resocia_git_logo.jpeg";
-// TODO: Replace with actual Akkodis logo when available
-import akkodisLogo from "public/work/human_resocia_git_logo.jpeg";
+import akkodisLogo from "public/work/akkodis.png";
 
 import village from "public/gallery/village.jpg";
 import random from "public/gallery/random-click.jpg";
@@ -27,10 +26,12 @@ export const metadata: Metadata = {
 };
 
 export default async function About({
-  params: { lang },
+  params,
 }: {
-  params: { lang: Locale };
+  params: Promise<{ lang: string }>;
 }) {
+  const { lang: langStr } = await params;
+  const lang = langStr as Locale;
   const { page } = await getDictionary(lang);
 
   return (

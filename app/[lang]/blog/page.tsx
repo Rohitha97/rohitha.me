@@ -12,10 +12,12 @@ export const metadata: Metadata = {
 };
 
 export default async function Blog({
-  params: { lang },
+  params,
 }: {
-  params: { lang: Locale };
+  params: Promise<{ lang: string }>;
 }) {
+  const { lang: langStr } = await params;
+  const lang = langStr as Locale;
   const posts = allPosts.sort(
     (a, b) =>
       new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),

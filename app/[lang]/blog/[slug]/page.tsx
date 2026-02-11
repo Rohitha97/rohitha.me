@@ -14,18 +14,19 @@ import Mdx from "@/components/ui/MdxWrapper";
 import { getDictionary } from "@/lib/dictionary";
 
 type Props = {
-  params: {
+  params: Promise<{
     slug: string;
     id: string;
-    lang: Locale;
-  };
-  searchParams: { [key: string]: string | string[] | undefined };
+    lang: string;
+  }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
 export async function generateMetadata(
-  { params, searchParams }: Props,
+  props: Props,
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
+  const params = await props.params;
   const post = allPosts.find((post) => post.slug === params.slug);
 
   if (!post) {
@@ -64,10 +65,12 @@ export async function generateMetadata(
   return metadata;
 }
 
-export default async function Post({ params }: { params: any }) {
-  const post = allPosts.find((post) => post.slug === params.slug);
+export default async function Post({ params }: { params: Promise<any> }) {
+  const { slug, lang: langStr } = await params;
+  const lang = langStr as Locale;
+  const post = allPosts.find((post) => post.slug === slug);
 
-  const { page } = await getDictionary(params.lang);
+  const { page } = await getDictionary(lang);
 
   if (!post) {
     notFound();
@@ -82,10 +85,10 @@ export default async function Post({ params }: { params: any }) {
         >
           <div className="max-w-xl space-y-2">
             <h1 className="text-3xl font-bold leading-tight tracking-tight text-primary">
-              {params.lang === "en" ? post.title : post.title_jp}
+              {lang === "en" ? post.title : post.title_jp}
             </h1>
             <p className="text-lg leading-tight text-secondary md:text-xl">
-              {params.lang === "en" ? post.summary : post.summary_jp}
+              {lang === "en" ? post.summary : post.summary_jp}
             </p>
           </div>
 
@@ -101,7 +104,7 @@ export default async function Post({ params }: { params: any }) {
               <p className="font-medium text-primary">Rohitha Rathnayake</p>
               <p className="text-secondary">
                 <time dateTime={post.publishedAt}>
-                  {params.lang === "en"
+                  {lang === "en"
                     ? formatDate(post.publishedAt)
                     : post.publishedAt_jp}
                 </time>
@@ -109,7 +112,7 @@ export default async function Post({ params }: { params: any }) {
                   ? `(Updated ${formatDate(post.updatedAt)})`
                   : ""}
                 {" · "}
-                <ViewCounter lang={params.lang} post={post} />
+                <ViewCounter lang={lang} post={post} />
               </p>
             </div>
           </div>
@@ -144,7 +147,7 @@ export default async function Post({ params }: { params: any }) {
 
       {/* <Subscribe /> */}
 
-      <Link href={`/${params.lang}/blog`}>← {page.blog.allBlog}</Link>
+      <Link href={`/${lang}/blog`}>← {page.blog.allBlog}</Link>
     </div>
   );
 }

@@ -148,7 +148,7 @@ export default function Gallery() {
         />
         <Photo
           src={japan}
-          meta="2022-09-28"
+          meta="2024-02-25"
           alt="Japan "
           width={230}
           height={250}
@@ -159,7 +159,7 @@ export default function Gallery() {
         />
         <Photo
           src={sakura}
-          meta="2022-10-25"
+          meta="2024-04-03"
           alt="Sakura"
           width={280}
           height={235}

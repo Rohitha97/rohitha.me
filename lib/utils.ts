@@ -1,9 +1,17 @@
 // lib/utils.ts
 
 import { Metadata } from "next";
+import type { Viewport } from "next";
+
 export function addCommas(x: any) {
   if (x === undefined || x === null) return "0";
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+export function constructViewport(): Viewport {
+  return {
+    themeColor: "#FFF",
+  };
 }
 
 export function constructMetadata({
@@ -33,7 +41,6 @@ export function constructMetadata({
     },
     icons,
     metadataBase: new URL("https://rohitha.me"),
-    themeColor: "#FFF",
     ...(noIndex && {
       robots: {
         index: false,

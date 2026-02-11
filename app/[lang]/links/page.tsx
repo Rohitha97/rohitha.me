@@ -6,10 +6,12 @@ import { Locale } from "@/i18n.config";
 import { getDictionary } from "@/lib/dictionary";
 
 export default async function Links({
-  params: { lang },
+  params,
 }: {
-  params: { lang: Locale };
+  params: Promise<{ lang: string }>;
 }) {
+  const { lang: langStr } = await params;
+  const lang = langStr as Locale;
   const { page } = await getDictionary(lang);
 
   return (
@@ -29,7 +31,7 @@ export default async function Links({
             style={{ "--index": 2 } as React.CSSProperties}
           >
             <h1 className="text-center text-2xl font-bold tracking-tight">
-              {page.home.name}
+              {page.home.firstName} {page.home.lastName}
             </h1>
             <p className="mx-auto max-w-sm text-center text-secondary">
               {page.links.description}

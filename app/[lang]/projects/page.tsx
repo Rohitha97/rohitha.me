@@ -13,10 +13,12 @@ export const metadata: Metadata = {
 };
 
 export default async function Blog({
-  params: { lang },
+  params,
 }: {
-  params: { lang: Locale };
+  params: Promise<{ lang: string }>;
 }) {
+  const { lang: langStr } = await params;
+  const lang = langStr as Locale;
   const projects = allProjects;
   const { page } = await getDictionary(lang);
 

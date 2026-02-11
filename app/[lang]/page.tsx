@@ -1,19 +1,18 @@
-import Image from "next/image";
 import Link from "@/components/ui/Link";
 import { allPosts } from ".contentlayer/generated";
 
 import PostList from "./blog/components/ui/PostList";
-import Stats from "@/components/Stats";
-import { ArrowUpRightIcon } from "@heroicons/react/20/solid";
-import Avatar from "@/public/avatar.png";
+import HeroSection from "@/components/HeroSection";
 import { getDictionary } from "@/lib/dictionary";
 import { Locale } from "@/i18n.config";
 
 export default async function Home({
-  params: { lang },
+  params,
 }: {
-  params: { lang: Locale };
+  params: Promise<{ lang: string }>;
 }) {
+  const { lang: langStr } = await params;
+  const lang = langStr as Locale;
   const posts = allPosts
     .sort(
       (a, b) =>
@@ -25,75 +24,27 @@ export default async function Home({
   const { page } = await getDictionary(lang);
 
   return (
-    <div className="flex flex-col gap-16 md:gap-24">
-      <div className="flex animate-in flex-col gap-8">
-        <div>
-          <h1 className="animate-in text-3xl font-bold tracking-tight text-primary">
-            {page.home.name}
-          </h1>
-          <p
-            className="animate-in text-secondary"
-            style={{ "--index": 1 } as React.CSSProperties}
-          >
-            {page.home.tag}
-          </p>
-        </div>
-        <div
-          className="flex animate-in flex-col gap-6 text-secondary md:flex-row md:items-center"
-          style={{ "--index": 1 } as React.CSSProperties}
-        >
-          <Image
-            src={Avatar}
-            width={85}
-            height={85}
-            alt="avatar"
-            className="rounded-full bg-secondary"
-          />
-          <Stats page={page} lang={lang} />
-        </div>
-        <p
-          className="max-w-lg animate-in text-primary"
-          style={{ "--index": 2 } as React.CSSProperties}
-        >
-          {page.home.description}
-        </p>
-        <ul
-          className="animated-list flex animate-in flex-col gap-2 text-secondary md:flex-row md:gap-6"
-          style={{ "--index": 2 } as React.CSSProperties}
-        >
-          <li className="transition-opacity">
-            <Link
-              href="mailto:rohith_rathnayake@yahoo.com"
-              className="flex items-center gap-2 no-underline"
-            >
-              <ArrowUpRightIcon className="h-5 w-5" />
-              <span>{page.assets.emailMe}</span>
-            </Link>
-          </li>
-          <li className="transition-opacity">
-            <Link
-              href={`/${lang}/links`}
-              className="flex items-center gap-2 no-underline"
-            >
-              <ArrowUpRightIcon className="h-5 w-5" />
-              <span>{page.assets.moreWays}</span>
-            </Link>
-          </li>
-        </ul>
-      </div>
-      <div
-        className="flex animate-in flex-col gap-8"
-        style={{ "--index": 3 } as React.CSSProperties}
+    <div className="flex flex-col gap-20 md:gap-32 bg-grain">
+      {/* Hero Section - New "Refined Technical" design */}
+      <HeroSection page={page} lang={lang} />
+
+      {/* Latest Posts Section */}
+      <section
+        className="flex flex-col gap-8"
+        style={{ "--index": 4 } as React.CSSProperties}
       >
-        <h2 className="text-secondary">{page.assets.latestPost}</h2>
+        <h2 className="font-display text-sm uppercase tracking-wider text-secondary">
+          {page.assets.latestPost}
+        </h2>
         <PostList posts={posts} lang={lang} page={page} />
         <Link
           href={`/${lang}/blog`}
-          className="text-secondary underline underline-offset-4 hover:text-primary"
+          className="group inline-flex items-center gap-2 text-secondary hover:text-acid underline underline-offset-4 transition-colors"
         >
-          {page.assets.seeAll}
+          <span>{page.assets.seeAll}</span>
+          <span className="transition-transform group-hover:translate-x-1">→</span>
         </Link>
-      </div>
+      </section>
     </div>
   );
 }
