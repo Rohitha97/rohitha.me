@@ -74,5 +74,8 @@
     "next-contentlayer2": {
       "next": "$next"
     }
+  },
+  "engines": {
+    "node": "24.x"
   }
 }
