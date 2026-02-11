@@ -30,7 +30,7 @@ export default function Stats({ page, lang }: { page: any; lang: any }) {
     fetcher,
   );
   const { data: postsData, error: postsError } = useSWR(
-    `/api/prisma/hitsTotal`,
+    `/api/hits/total`,
     fetcher,
   );
 

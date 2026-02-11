@@ -13,7 +13,7 @@ export default function ViewCounter({
   post: PostType;
   lang: any;
 }) {
-  const { data } = useSWR(`/api/prisma/hitsSlug?slug=${post.slug}`, fetcher, {
+  const { data } = useSWR(`/api/hits/slug?slug=${post.slug}`, fetcher, {
     revalidateOnFocus: false,
   });
   const views = data?.Views;
