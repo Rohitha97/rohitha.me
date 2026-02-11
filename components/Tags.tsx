@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import slugify from "slugify";
 import Link from "./ui/Link";
 
@@ -5,7 +6,7 @@ type TagsProps = {
   tags: string[];
 };
 
-const Tags = ({ tags }: TagsProps): JSX.Element | null => {
+const Tags = ({ tags }: TagsProps): ReactNode => {
   if (!tags?.length) {
     return null;
   }

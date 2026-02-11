@@ -1,9 +1,10 @@
 "use client";
 
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
 import useMousePosition from "@/hooks/usemouseposition";
 import { motion } from "framer-motion";
 import clsx from "clsx";
+import React from "react";
 
 type HaloProps = {
   children: ReactNode | ReactNode[];

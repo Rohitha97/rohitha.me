@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import Link from "@/components/ui/Link";
 import { Metadata } from "next";
 
@@ -6,7 +7,7 @@ export const metadata: Metadata = {
   description: "Uh oh! This page does not exist",
 };
 
-const notFound = (): JSX.Element => (
+const notFound = (): ReactNode => (
   <div className="flex flex-col gap-2">
     <h1>404 - Page not found</h1>
     <p className="text-secondary">

@@ -1,4 +1,4 @@
-import { FaYoutube, FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 interface ConnectLink {
   label: string;

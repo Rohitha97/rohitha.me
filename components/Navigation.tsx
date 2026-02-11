@@ -1,4 +1,3 @@
-import React from "react";
 import { getDictionary } from "@/lib/dictionary";
 import { Locale } from "@/i18n.config";
 import NavigationClient from "./NavigationClient";

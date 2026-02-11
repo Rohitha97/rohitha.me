@@ -4,7 +4,7 @@ import useSWR from "swr";
 import { useTheme } from "next-themes";
 import clsx from "clsx";
 
-import { FaYoutube, FaGithub } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
 import { ArrowTrendingUpIcon } from "@heroicons/react/20/solid";
 
 import FlipNumber from "@/components/FlipNumber";
