@@ -17,7 +17,7 @@ export default function CustomImage({
   src,
   width,
   height,
-  alt,
+  alt = "",
   caption,
   breakout,
   rounded,

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import type { Metadata, ResolvingMetadata } from "next";
-import { allPosts, Post as PostType } from ".contentlayer/generated";
+import { allPosts, allPostJps, Post as PostType } from ".contentlayer/generated";
 
 import Tags from "@/components/Tags";
 import Link from "@/components/ui/Link";
@@ -70,11 +70,20 @@ export default async function Post({ params }: { params: Promise<any> }) {
   const lang = langStr as Locale;
   const post = allPosts.find((post) => post.slug === slug);
 
-  const { page } = await getDictionary(lang);
-
   if (!post) {
     notFound();
   }
+
+  // Logic to get Japanese content
+  let bodyCode = post.body.code;
+  if (lang === "jp") {
+    const jpPost = allPostJps.find((p) => p.slug === slug);
+    if (jpPost) {
+      bodyCode = jpPost.body.code;
+    }
+  }
+
+  const { page } = await getDictionary(lang);
 
   return (
     <div className="flex flex-col gap-20">
@@ -139,7 +148,7 @@ export default async function Post({ params }: { params: Promise<any> }) {
           className="prose prose-neutral animate-in"
           style={{ "--index": 3 } as React.CSSProperties}
         >
-          <Mdx code={post.body.code} />
+          <Mdx code={bodyCode} />
         </div>
       </article>
 

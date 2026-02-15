@@ -48,6 +48,18 @@ export const Post = defineDocumentType(() => ({
   computedFields: postComputedFields,
 }));
 
+export const PostJp = defineDocumentType(() => ({
+  name: "PostJp",
+  filePathPattern: `blog-jp/**/*.mdx`,
+  contentType: "mdx",
+  fields: {
+    title: { type: "string", required: true },
+    summary: { type: "string", required: false },
+    publishedAt: { type: "string", required: false },
+  },
+  computedFields: postComputedFields,
+}));
+
 const projectComputedFields: ComputedFields = {
   slug: {
     type: "string",
@@ -80,7 +92,7 @@ export const Project = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: "content",
-  documentTypes: [Post, Project],
+  documentTypes: [Post, Project, PostJp],
   mdx: {
     rehypePlugins: [rehypePrism, rehypeSlug],
   },

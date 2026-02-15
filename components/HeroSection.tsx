@@ -75,7 +75,7 @@ export default function HeroSection({ page, lang }: HeroSectionProps) {
         </AnimatedItem>
 
         {/* Avatar + Stats - Asymmetric layout */}
-        <AnimatedItem className="flex flex-col md:flex-row md:items-start gap-6 mt-4">
+        <AnimatedItem className="flex flex-col items-start md:flex-row md:items-start gap-6 mt-4">
           <motion.div
             whileHover={{ scale: 1.05, rotate: 2 }}
             transition={{ type: "spring", ...springConfigs.snappy }}

@@ -14,8 +14,8 @@ const Tags = ({ tags }: TagsProps): ReactNode => {
     <ul className="flex flex-col gap-6">
       <h2>Tags</h2>
       <div className="animated-list flex flex-wrap gap-3">
-        {tags.map((tag: string) => (
-          <li key={tag} className="transition-opacity">
+        {tags.map((tag: string, index: number) => (
+          <li key={`${tag}-${index}`} className="transition-opacity">
             <Link
               href={`/blog/tag/${slugify(tag, { lower: true })}`}
               className="whitespace-nowrap rounded-lg bg-secondary px-4 py-2 text-sm text-primary "

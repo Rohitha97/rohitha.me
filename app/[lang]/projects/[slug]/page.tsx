@@ -59,9 +59,9 @@ export default async function Project({
         <div className="flex flex-col gap-6">
           <h2> {page.project.Tags}</h2>
           <div className="flex flex-wrap gap-3 ">
-            {post.tags.map((tag: string) => (
+            {post.tags.map((tag: string, index: number) => (
               <div
-                key={tag}
+                key={`${tag}-${index}`}
                 className="whitespace-nowrap rounded-lg bg-secondary px-4 py-1.5 text-sm text-secondary"
               >
                 {tag}

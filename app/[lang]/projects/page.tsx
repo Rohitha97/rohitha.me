@@ -46,38 +46,37 @@ export default async function Blog({
             <li
               key={project.slug}
               className={clsx(
-                "flex flex-col gap-4 py-6 transition-opacity first:pt-0 last:pb-0 md:flex-row md:gap-6",
+                "transition-opacity first:pt-0 last:pb-0",
               )}
             >
               <Link
                 href={`/${lang}/projects/${project.slug}`}
-                className="aspect-video w-full select-none overflow-clip rounded-lg border border-secondary bg-tertiary md:w-2/5"
+                className="flex flex-col gap-4 py-6 md:flex-row md:gap-6"
               >
-                <Halo strength={10}>
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    layout="fill"
-                    objectFit="cover"
-                    className="h-full w-full"
-                  />
-                </Halo>
-              </Link>
-              <div className="w-full space-y-2 md:w-3/5">
-                <div>
-                  <Link
-                    href={`/${lang}/projects/${project.slug}`}
-                    className="font-medium text-primary hover:underline"
-                  >
-                    {lang === "en" ? project.title : project.title_jp}
-                  </Link>
-                  <time className="text-secondary"> · {project.time}</time>
+                <div className="aspect-video w-full select-none overflow-clip rounded-lg border border-secondary bg-tertiary md:w-2/5">
+                  <Halo strength={10}>
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      layout="fill"
+                      objectFit="cover"
+                      className="h-full w-full"
+                    />
+                  </Halo>
                 </div>
+                <div className="w-full space-y-2 md:w-3/5">
+                  <div>
+                    <span className="font-medium text-primary">
+                      {lang === "en" ? project.title : project.title_jp}
+                    </span>
+                    <time className="text-secondary"> · {project.time}</time>
+                  </div>
 
-                <p className="line-clamp-3 text-tertiary">
-                  {lang === "en" ? project.description : project.description_jp}
-                </p>
-              </div>
+                  <p className="line-clamp-3 text-tertiary">
+                    {lang === "en" ? project.description : project.description_jp}
+                  </p>
+                </div>
+              </Link>
             </li>
           ))}
         </ul>
