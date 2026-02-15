@@ -49,20 +49,6 @@ export default function Stats({ page, lang }: { page: any; lang: any }) {
           <FaGithub className="text-xl" />
           <div>
             <FlipNumber>
-              {githubData ? addCommas(githubData?.stars) : "000"}
-            </FlipNumber>
-            <span> {page.home.repoStars}</span>
-          </div>
-        </Link>
-      </li>
-      <li className="transition-opacity">
-        <Link
-          className="flex items-center gap-3 no-underline"
-          href={"https://github.com/Rohitha97"}
-        >
-          <FaGithub className="text-xl" />
-          <div>
-            <FlipNumber>
               {githubData ? addCommas(githubData?.repoCount) : "000"}
             </FlipNumber>
             <span> {page.home.repos}</span>

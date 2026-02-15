@@ -110,19 +110,35 @@ function Photo({
         <div
           className={clsx(
             shared,
-            "flex items-center overflow-hidden rounded-2xl bg-[#FFFAF2]",
+            "flex items-center overflow-hidden rounded-2xl bg-[#0A0A0C] border border-white/5",
           )}
           style={{
             backfaceVisibility: "hidden",
             transform: "rotateY(180deg)",
           }}
         >
-          <Halo strength={50} className="flex items-center">
-            <span className="absolute h-[500px] w-[500px] rotate-[-20deg] bg-[url('/photopaper.png')] bg-[length:280px] bg-repeat" />
-            <div className="z-[1] px-6">
-              <div className="flex flex-col gap-1 uppercase">
-                <p className="text-sm text-secondary">{fileName}</p>
-                {meta && <p className="text-sm text-secondary">{meta}</p>}
+          <Halo strength={80} className="flex items-center justify-center">
+            {/* Technical grid pattern */}
+            <div 
+              className="absolute inset-0 opacity-20" 
+              style={{
+                backgroundImage: "radial-gradient(#DBDBDB 1px, transparent 1px)",
+                backgroundSize: "24px 24px"
+              }}
+            />
+            {/* Glow effect */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-white/5 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+            
+            <div className="z-[1] px-6 text-center">
+              <div className="flex flex-col gap-2 uppercase tracking-widest">
+                <p className="font-display text-lg font-bold text-white drop-shadow-md">{fileName}</p>
+                {meta && (
+                  <div className="flex items-center justify-center gap-2">
+                    <span className="h-px w-4 bg-[#BFFF00]/50" />
+                    <p className="font-mono text-xs text-gray-400">{meta}</p>
+                    <span className="h-px w-4 bg-[#BFFF00]/50" />
+                  </div>
+                )}
               </div>
             </div>
           </Halo>
