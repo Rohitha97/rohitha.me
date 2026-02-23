@@ -8,29 +8,10 @@ function getRelativeCoordinates(
   event: React.MouseEvent<HTMLUListElement>,
   referenceElement: any,
 ) {
-  const position = {
-    x: event.pageX,
-    y: event.pageY,
-  };
-
-  const offset = {
-    left: referenceElement.offsetLeft,
-    top: referenceElement.clientTop,
-    width: referenceElement.clientWidth,
-    height: referenceElement.clientHeight,
-  };
-
-  let reference = referenceElement.offsetParent;
-
-  while (reference) {
-    offset.left += reference.offsetLeft;
-    offset.top += reference.offsetTop;
-    reference = reference.offsetParent;
-  }
-
+  const rect = referenceElement.getBoundingClientRect();
   return {
-    x: position.x - offset.left,
-    y: position.y - offset.top,
+    x: event.clientX - rect.left,
+    y: event.clientY - rect.top,
   };
 }
 
@@ -54,7 +35,7 @@ export default function PostList({ lang, posts, page }: PostListProps) {
     <ul
       ref={listRef}
       onMouseMove={(e) => handleMouseMove(e)}
-      className="animated-list flex flex-col"
+      className="animated-list flex flex-col relative"
     >
       {page && page.home && posts.length === 0 && <p>{page.assets.noPosts}</p>}
 
