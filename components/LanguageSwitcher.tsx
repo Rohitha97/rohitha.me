@@ -81,7 +81,7 @@ export default function LanguageSwitcher() {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ type: "spring", bounce: 0.3, duration: 0.3 }}
-            className="w-42 absolute right-0 mt-2 max-h-60 origin-top-right overflow-auto rounded-xl bg-white p-2 text-base capitalize shadow-lg focus:outline-none dark:bg-black sm:text-sm"
+            className="w-42 absolute right-0 mt-2 max-h-60 origin-top-right overflow-auto rounded-xl bg-primary p-2 text-base capitalize shadow-lg ring-1 ring-primary focus:outline-none dark:bg-black sm:text-sm"
           >
             {i18n.locales.map((locale) => (
               <li key={locale} role="option" aria-selected={locale === currentLocale}>
