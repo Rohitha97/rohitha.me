@@ -29,9 +29,9 @@ module.exports = {
           300: "#0A0A0C",
         },
         acid: {
-          DEFAULT: "#BFFF00",
-          glow: "rgba(191, 255, 0, 0.15)",
-          muted: "rgba(191, 255, 0, 0.6)",
+          DEFAULT: "var(--accent)",
+          glow: "var(--accent-glow)",
+          muted: "color-mix(in srgb, var(--accent) 60%, transparent)",
         },
       },
       textColor: {

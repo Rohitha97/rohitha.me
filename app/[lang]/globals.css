@@ -34,6 +34,24 @@
     --boxBg: var(--gray-4);
   }
 
+  /* Override light mode with warm off-white palette */
+  .light {
+    --gray-1: #FAFAF8;
+    --gray-2: #F5F5F0;
+    --gray-3: #ECECEA;
+    --gray-4: #E4E4E0;
+    --gray-5: #D9D9D4;
+    --gray-6: #CCCCC6;
+    --gray-11: #63635E;
+    --gray-12: #1C1C1A;
+    
+    /* Light-mode accent: teal instead of acid green */
+    --brand: #0D9488;
+    --accent: #0D9488;
+    --accent-glow: rgba(13, 148, 136, 0.12);
+    --brandTinted: rgba(13, 148, 136, 0.08);
+  }
+
   /* Override dark mode with obsidian palette */
   .dark {
     --gray-1: #0A0A0C;
@@ -122,6 +140,12 @@
     overflow-x: hidden;
     background-color: var(--bg);
   }
+
+  /* Light mode subtle warmth on body */
+  .light body {
+    background: linear-gradient(180deg, #FAFAF8 0%, #F5F0EB 100%);
+    background-attachment: fixed;
+  }
 }
 
 /* ============================================
@@ -154,7 +178,7 @@
   90% { transform: translate(-1%, 2%); }
 }
 
-/* Acid Green accent utilities */
+/* Acid Green accent utilities (dark mode default) */
 .text-acid {
   color: #BFFF00;
 }
@@ -170,6 +194,24 @@
 .accent-glow {
   box-shadow: 0 0 20px rgba(191, 255, 0, 0.3),
               0 0 40px rgba(191, 255, 0, 0.1);
+}
+
+/* Light mode accent overrides — teal */
+.light .text-acid {
+  color: #0D9488;
+}
+
+.light .bg-acid {
+  background-color: #0D9488;
+}
+
+.light .border-acid {
+  border-color: #0D9488;
+}
+
+.light .accent-glow {
+  box-shadow: 0 0 20px rgba(13, 148, 136, 0.2),
+              0 0 40px rgba(13, 148, 136, 0.08);
 }
 
 .accent-underline {
@@ -257,11 +299,26 @@ input:-webkit-autofill:focus {
   );
 }
 
+.light .brand-gradient {
+  background: linear-gradient(
+    135deg,
+    #0D9488 0%,
+    #14B8A6 50%,
+    #2DD4BF 100%
+  );
+}
+
 .text-gradient {
   background: linear-gradient(140deg, #BFFF00, #7FFF00, #00FF88);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   width: fit-content;
+}
+
+.light .text-gradient {
+  background: linear-gradient(140deg, #0D9488, #14B8A6, #0F766E);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .like-button {
@@ -325,6 +382,11 @@ input:-webkit-autofill:focus {
               0 4px 10px rgba(0, 0, 0, 0.08);
 }
 
+.light .card-hover:hover {
+  box-shadow: 0 4px 20px rgba(28, 28, 26, 0.08),
+              0 8px 40px rgba(13, 148, 136, 0.06);
+}
+
 .dark .card-hover:hover {
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4),
               0 0 15px rgba(191, 255, 0, 0.08);
@@ -340,6 +402,12 @@ input:-webkit-autofill:focus {
   box-shadow: 0 0 20px rgba(191, 255, 0, 0.2),
               0 0 40px rgba(191, 255, 0, 0.08);
   filter: brightness(1.05);
+}
+
+.light .glow-hover:hover {
+  box-shadow: 0 0 20px rgba(13, 148, 136, 0.15),
+              0 0 40px rgba(13, 148, 136, 0.06);
+  filter: brightness(1.02);
 }
 
 /* Enhanced gradient animation */
@@ -461,6 +529,10 @@ pre[class*="language-"] {
   background-color: rgba(191, 255, 0, 0.15);
 }
 
+.light .code-line.inserted {
+  background-color: rgba(13, 148, 136, 0.1);
+}
+
 .code-line.deleted {
   background-color: rgba(239, 68, 68, 0.2);
 }
@@ -471,6 +543,11 @@ pre[class*="language-"] {
   padding-left: 26px;
   background-color: rgba(191, 255, 0, 0.08);
   border-left: 2px solid #BFFF00;
+}
+
+.light .highlight-line {
+  background-color: rgba(13, 148, 136, 0.06);
+  border-left: 2px solid #0D9488;
 }
 
 .line-number::before {

@@ -25,7 +25,7 @@ export default function ThemeSwitcher() {
         rounded-full 
         px-1
         ring-2
-        ring-gray-400
+        ring-secondary
         transition-colors 
         duration-500
         ease-in 

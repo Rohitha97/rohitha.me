@@ -90,7 +90,7 @@ export default function HeroSection({ page, lang }: HeroSectionProps) {
               priority
             />
             {/* Status indicator */}
-            <span className="absolute -bottom-1 -right-1 w-4 h-4 bg-acid rounded-full border-2 border-obsidian" />
+            <span className="absolute -bottom-1 -right-1 w-4 h-4 bg-acid rounded-full border-2 border-[var(--gray-1)]" />
           </motion.div>
           <Stats page={page} lang={lang} />
         </AnimatedItem>
